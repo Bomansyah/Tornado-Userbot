@@ -49,10 +49,10 @@ async def deploy(event, repo, ups_rem, ac_br, txt):
                 break
         if heroku_app is None:
             await event.edit(
-                f"{txt}\n`Kredensial Heroku tidak valid untuk deploy Man-Userbot dyno.`"
+                f"{txt}\n`Kredensial Heroku tidak valid untuk deploy Tornado-Userbot dyno.`"
             )
             return repo.__del__()
-        await event.edit("`[HEROKU]: Update Deploy Man-Userbot Sedang Dalam Proses...`")
+        await event.edit("`[HEROKU]: Update Deploy Tornado-Userbot Sedang Dalam Proses...`")
         ups_rem.fetch(ac_br)
         repo.git.reset("--hard", "FETCH_HEAD")
         heroku_git_url = heroku_app.git_url.replace(
@@ -77,14 +77,14 @@ async def deploy(event, repo, ups_rem, ac_br, txt):
             return await event.delete()
         else:
             await event.edit(
-                "`Man-Userbot Berhasil Di Deploy! Userbot bisa di gunakan kembali.`"
+                "`『Tornado-Userbot Berhasil Di Deploy』! Userbot bisa di gunakan kembali.`"
             )
             await asyncio.sleep(15)
             await event.delete()
 
         if BOTLOG:
             await event.client.send_message(
-                BOTLOG_CHATID, "#BOT \n" "**Boman-Userbot Berhasil Di Update**"
+                BOTLOG_CHATID, "#BOT \n" "**『Tornado-Userbot Telah Berhasil di Update』**"
             )
 
     else:
@@ -109,7 +109,7 @@ async def update(event, repo, ups_rem, ac_br):
 
     if BOTLOG:
         await event.client.send_message(
-            BOTLOG_CHATID, "#BOT \n" "**Man-Userbot Sedang Di Perbarui**"
+            BOTLOG_CHATID, "#BOT \n" "**『Tornado-Userbot Sedang Diperbarui』**"
         )
         await asyncio.sleep(100)
         await event.delete()
@@ -171,13 +171,13 @@ async def upstream(event):
     changelog = await gen_chlog(repo, f"HEAD..upstream/{ac_br}")
 
     if changelog == "" and not force_update:
-        await event.edit(f"\n**✥ Boman-Userbot Sudah Versi Terbaru**\n")
+        await event.edit(f"\n**✥ 『Tornado-Userbot Sudah Versi Terbaru』**\n")
         await asyncio.sleep(15)
         await event.delete()
         return repo.__del__()
 
     if conf is None and not force_update:
-        changelog_str = f"**✥ Pembaruan Untuk Boman-Userbot [{ac_br}] :\n\n✥ Pembaruan:**\n`{changelog}`"
+        changelog_str = f"**✥ Pembaruan Untuk 『Tornado-Userbot』 [{ac_br}] :\n\n✥ Pembaruan:**\n`{changelog}`"
         if len(changelog_str) > 4096:
             await event.edit("`Changelog Terlalu Besar, Buka File Untuk Melihatnya.`")
             with open("output.txt", "w+") as file:
@@ -191,7 +191,7 @@ async def upstream(event):
         else:
             await event.edit(changelog_str)
         return await event.respond(
-            "✥ **Perintah Untuk Update Boman-Userbot**\n ›`.update now`\n ›`.update deploy`\n\n__Untuk Meng Update Fitur Terbaru Dari Man-Userbot.__"
+            "✥ **Perintah Untuk Update 『Tornado-Userbot』**\n ›`.update now`\n ›`.update deploy`\n\n__Untuk Meng Update Fitur Terbaru Dari 『Tornado-Userbot』.__"
         )
 
     if force_update:
@@ -199,13 +199,13 @@ async def upstream(event):
             "`Sinkronisasi Paksa Ke Kode Userbot Stabil Terbaru, Harap Tunggu .....`"
         )
     else:
-        await event.edit("`✣ Proses Update Boman-Userbot, Loading....1%`")
-        await event.edit("`✣ Proses Update Boman-Userbot, Loading....12%`")
-        await event.edit("`✣ Proses Update Boman-Userbot, Loading....25%`")
-        await event.edit("`✣ Proses Update Boman-Userbot, Loading....46%`")
-        await event.edit("`✣ Proses Update Boman-Userbot, Loading....76%`")
-        await event.edit("`✣ Proses Update Boman-Userbot, Updating...92%`")
-        await event.edit("`✣ Proses Update Boman-Userbot, Tunggu Sebentar....100%`")
+        await event.edit("`⚒️ Proses Update 『Tornado-Userbot』, Loading....1%`")
+        await event.edit("`⚒️ Proses Update 『Tornado-Userbot』, Loading....12%`")
+        await event.edit("`⚒️ Proses Update 『Tornado-Userbot』, Loading....25%`")
+        await event.edit("`⚒️ Proses Update 『Tornado-Userbot』, Loading....46%`")
+        await event.edit("`⚒️ Proses Update 『Tornado-Userbot』, Loading....76%`")
+        await event.edit("`⚒️ Proses Update 『Tornado-Userbot』, Updating...92%`")
+        await event.edit("`⚒️ Proses Update 『Tornado-Userbot』, Tunggu Sebentar....100%`")
     if conf == "now":
         for commit in changelog.splitlines():
             if (
