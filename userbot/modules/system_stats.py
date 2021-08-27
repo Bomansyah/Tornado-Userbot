@@ -241,9 +241,9 @@ async def amireallyalive(alive):
         f"┣ ✥ `Modules  : `{len(modules)} \n"
         f"┣ ✥ `Uptime   : `{uptime} \n"
         f"┗━━━━━━━━━━━━━━━━ \n"
-        f"⚡️ **Repo Userbot :** [Boman-Userbot](https://github.com/Bomansyah/Boman-Userbot) \n"
-        f"⚡️ **Grup Userbot :** [Tekan Disini](https://t.me/BOMANSTORE1) \n"
-        f"⚡️ **Owner :** [Risman](t.me/BomanTriwizard) \n"
+        f"⚡️ **Repo Userbot :** [Tornado-Userbot](https://github.com/Bomansyah/Tornado-Userbot) \n"
+        f"⚡️ **Grup Userbot :** [Tekan Disini](https://t.me/TornadoUserbot) \n"
+        f"⚡️ **Owner :** [RealBoman](t.me/BomanTriwizard) \n"
     )
     if ALIVE_LOGO:
         try:
@@ -317,7 +317,7 @@ async def amireallyalive(alive):
         f"{ALIVE_EMOJI} **Python Version :** `{python_version()}` \n"
         f"{ALIVE_EMOJI} **Telethon Version :** `{version.__version__}` \n"
         f"{ALIVE_EMOJI} **Bot Uptime :** `{uptime}` \n\n"
-        "    **[𝗦𝘂𝗽𝗽𝗼𝗿𝘁](https://t.me/BOMANSTORE1)** | **[𝗖𝗵𝗮𝗻𝗻𝗲𝗹](https://t.me/BOMANSTORE)** | **[𝗢𝘄𝗻𝗲𝗿](t.me/BomanTriwizard)**"
+        "    **[𝗦𝘂𝗽𝗽𝗼𝗿𝘁](https://t.me/TornadoUserbot)** | **[𝗖𝗵𝗮𝗻𝗻𝗲𝗹](https://t.me/BOMANSTORE)** | **[𝗢𝘄𝗻𝗲𝗿](t.me/BomanTriwizard)**"
     )
     if ALIVE_LOGO:
         try:
