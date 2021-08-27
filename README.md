@@ -17,12 +17,6 @@ mengelola grup secara efisien dan mengotomatiskan beberapa hal yang membosankan.
 Gunakan bot ini dengan risiko Anda sendiri, dan gunakan dengan bijak.
 ```
 
-## Tutorial
-
-- [Panduan Cara Memasang Man-Userbot](https://mrismanaziz.medium.com/cara-memasang-userbot-telegram-repo-man-userbot-deploy-di-heroku-c56d1f8b5537)
-- [Cara Setting GDrive modules](https://telegra.ph/How-To-Setup-Google-Drive-04-03)
-- [Cara Setting Last.FM modules](https://telegra.ph/How-to-set-up-LastFM-module-for-Paperplane-userbot-11-02)
-
 ### Generate String Session
 Untuk Mendapatkan String Session, Silahkan Ketik #string 
 Di Group [@TornadoUserbot](https://t.me/TornadoUserbot)
