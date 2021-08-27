@@ -87,8 +87,8 @@ def register(**args):
                 if not disable_errors:
                     date = strftime("%Y-%m-%d %H:%M:%S", gmtime())
 
-                    text = "**✘ MAN-USERBOT ERROR REPORT ✘**\n\n"
-                    link = "[Group Support](https://t.me/SharingUserbot)"
+                    text = "**✘ Tornado-Userbot ERROR REPORT ✘**\n\n"
+                    link = "[Group Support](https://t.me/TornadoUserbot)"
                     text += "Jika mau, Anda bisa melaporkan error ini, "
                     text += f"Cukup forward saja pesan ini ke {link}.\n\n"
 
@@ -97,7 +97,7 @@ def register(**args):
                     ftext += "\nkami hanya mencatat fakta error dan tanggal,"
                     ftext += "\nkami menghormati privasi Anda."
                     ftext += "\nJika mau, Anda bisa melaporkan error ini,"
-                    ftext += "\ncukup forward saja pesan ini ke @SharingUserbot"
+                    ftext += "\ncukup forward saja pesan ini ke @TornadoUserbot"
                     ftext += "\n================================\n\n"
                     ftext += "--------BEGIN USERBOT TRACEBACK LOG--------\n"
                     ftext += "\nTanggal : " + date
