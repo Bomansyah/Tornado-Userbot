@@ -31,7 +31,7 @@ Gunakan bot ini dengan risiko Anda sendiri, dan gunakan dengan bijak.
 
 ## Updates dan support
 
-Follow Channel [@BOMANSTORE](https://t.me/BOMANSTORE) untuk info Update bot dan Gabung Group [@BOMANSTORE1](https://t.me/BOMANSTORE1) untuk untuk diskusi, pelaporan bug, dan bantuan tentang Boman-Userbot.
+Follow Channel [@BOMANSTORE](https://t.me/BOMANSTORE) untuk info Update bot dan Gabung Group [@TornadoUserbot](https://t.me/TornadoUserbot) untuk untuk diskusi, pelaporan bug, dan bantuan tentang Tornado-Userbot.
 
 ## Credits
 Thanks For all :
