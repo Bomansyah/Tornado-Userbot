@@ -1,5 +1,5 @@
 # Tornado-Userbot
-![Tornado-Userbot Logo](https://telegra.ph/file/3dc3ef79fea7d08bb785a.jpg)
+![Tornado-Userbot Logo](https://telegra.ph/file/d0b4513031fd141edbe93.jpg)
 
 # Tornado-Userbot Telegram
 
@@ -56,7 +56,7 @@ Thanks For all :
 Licensed under [Raphielscape Public License](https://github.com/mrismanaziz/Man-Userbot/blob/Man-Userbot/LICENSE) - Version 1.d, February 2020
  Telegram
 
-Man-Userbot adalah userbot Telegram modular yang berjalan di Python3 dengan database sqlalchemy.
+Tornado-Userbot adalah userbot Telegram modular yang berjalan di Python3 dengan database sqlalchemy.
 
 Berbasis [Paperplane](https://github.com/RaphielGang/Telegram-UserBot) dan [ProjectBish](https://github.com/adekmaulana/ProjectBish) userbot.
 Saya membuat repository ini untuk memilih dan menambahkan beberapa modul yang saya butuhkan dengan banyak perubahan, fitur dan modul.
@@ -84,7 +84,7 @@ Gunakan bot ini dengan risiko Anda sendiri, dan gunakan dengan bijak.
 
 ## Updates dan support
 
-Follow Channel [@BOMANSTORE](https://t.me/BOMANSTORE) untuk info Update bot dan Gabung Group [@BOMANSTORE1](https://t.me/BOMANSTORE1) untuk untuk diskusi, pelaporan bug, dan bantuan tentang Boman-Userbot.
+Follow Channel [@BOMANSTORE](https://t.me/BOMANSTORE) untuk info Update bot dan Gabung Group [@TornadoUserbot](https://t.me/TornadoUserbot) untuk untuk diskusi, pelaporan bug, dan bantuan tentang Tornado-Userbot.
 
 ## Credits
 Thanks For all :
