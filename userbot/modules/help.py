@@ -30,11 +30,11 @@ async def help(event):
             string += "`" + str(i)
             string += f"`\t\t{ICON_HELP}\t\t"
         await event.edit(
-            f"**✦ Daftar Perintah Untuk Man-Userbot:**\n"
+            f"**✦ Daftar Perintah Untuk Tornado-Userbot:**\n"
             f"**✦ Jumlah** `{len(modules)}` **Modules**\n"
             f"**✦ Owner:** `{ALIVE_NAME}`\n\n"
             f"{ICON_HELP}  {string}"
-            "\n\nSupport @Lunatic0de"
+            "\n\nSupport @TornadoUserbot"
         )
         await event.reply(
             "\n**Contoh Ketik** `.help afk` **Untuk Melihat Informasi Module**"
