@@ -4,8 +4,8 @@
 # you may not use this file except in compliance with the License.
 #
 # inline credit @keselekpermen69
-# Recode by @mrismanaziz
-# t.me/SharingUserbot
+# Recode by @BomanTriwizard
+# t.me/TornadoUserbot
 #
 """ Userbot initialization. """
 
@@ -192,7 +192,7 @@ S_PACK_NAME = os.environ.get("S_PACK_NAME", "ini stikerku")
 
 # Default .alive logo
 ALIVE_LOGO = os.environ.get(
-    "ALIVE_LOGO") or "https://telegra.ph/file/9dc4e335feaaf6a214818.jpg"
+    "ALIVE_LOGO") or "https://telegra.ph/file/d0b4513031fd141edbe93.jpg"
 
 # Last.fm Module
 BIO_PREFIX = os.environ.get("BIO_PREFIX", None)
@@ -346,7 +346,7 @@ with bot:
 
 
 async def check_alive():
-    await bot.send_message(BOTLOG_CHATID, "```༺𝕭𝖔𝖒𝖆𝖓-𝖀𝖘𝖊𝖗𝖇𝖔𝖙 𝖙𝖊𝖑𝖆𝖍 𝖆𝖐𝖙𝖎𝖋༻```")
+    await bot.send_message(BOTLOG_CHATID, "```『Tornado-Userbot Telah Aktif』```")
     return
 
 with bot:
@@ -423,18 +423,18 @@ with bot:
         async def handler(event):
             await event.message.get_sender()
             text = (
-                f"**Hey**, __I am using__ 💥 **Boman-Userbot** 💥\n\n"
+                f"**Hey**, __I am using__ 🚀Tornado-Userbot🚀\n\n"
                 f"       __Thanks For Using me__\n\n"
                 f"✣ **Userbot Version :** `{BOT_VER}@{UPSTREAM_REPO_BRANCH}`\n"
-                f"✣ **Group Support :** [Sharing Userbot](t.me/BOMANSTORE)\n"
+                f"✣ **Group Support :** [Sharing Userbot](t.me/TornadoUserbot)\n"
                 f"✣ **Owner Repo :** [REAL BOMAN](t.me/BomanTriwizard)\n"
-                f"✣ **Repo :** [Boman-Userbot](https://github.com/mrismanaziz/Man-Userbot)\n")
+                f"✣ **Repo :** [Tornado-Userbot](https://github.com/Bomansyah/Tornado-Userbot)\n")
             await tgbot.send_file(event.chat_id, logo, caption=text,
                                   buttons=[
                                       [
                                           custom.Button.url(
                                               text="⛑ Group Support ⛑",
-                                              url="https://t.me/BOMANSTORE"
+                                              url="https://t.me/TornadoUserbot"
                                           )
                                       ]
                                   ]
@@ -450,7 +450,7 @@ with bot:
                 result = builder.article(
                     "Harap Gunakan .help Untuk Perintah",
                     text="{}\n\n**✥ Jumlah Module Yang Tersedia :** `{}` **Module**\n               \n**✥ Daftar Modul Man-Userbot :** \n".format(
-                        "**⌛ Boman-Userbot Main Menu ⌛**",
+                        "**⛑️ Tornado-Userbot Main Menu ⛑️**",
                         len(dugmeler),
                     ),
                     buttons=buttons,
@@ -459,33 +459,33 @@ with bot:
             elif query.startswith("repo"):
                 result = builder.article(
                     title="Repository",
-                    description="Repository Boman - Userbot",
-                    url="https://t.me/SharingUserbot",
-                    text="**Boman - UserBot**\n➖➖➖➖➖➖➖➖➖➖\n✣ **Owner Repo :** [Boman](https://t.me/BomanTriwizard)\n✣ **Grup Support :** @BOMANSTORE\n✣ **Repository :** [Man-Userbot](https://github.com/mrismanaziz/Man-Userbot)\n➖➖➖➖➖➖➖➖➖➖",
+                    description="Repository Tornado-Userbot",
+                    url="https://t.me/TornadoUserbot",
+                    text="**Boman - UserBot**\n➖➖➖➖➖➖➖➖➖➖\n✣ **Owner Repo :** [Boman](https://t.me/BomanTriwizard)\n✣ **Grup Support :** @TornadoUserbot\n✣ **Repository :** [Tornado-Userbot](https://github.com/Bomansyah/Tornado-Userbot)\n➖➖➖➖➖➖➖➖➖➖",
                     buttons=[
                         [
                             custom.Button.url(
                                 "Support",
-                                "https://t.me/SharingUserbot"),
+                                "https://t.me/TornadoUserbot"),
                             custom.Button.url(
                                 "Repo",
-                                "https://github.com/mrismanaziz/Man-Userbot")],
+                                "https://github.com/Bomansyah/Tornado-Userbot")],
                     ],
                     link_preview=False)
             else:
                 result = builder.article(
-                    title="💥 Boman-Userbot 💥",
-                    description="Boman - UserBot | Telethon",
-                    url="https://t.me/BOMANSTORE",
-                    text="**Boman - UserBot**\n➖➖➖➖➖➖➖➖➖➖\n✣ **Owner Repo :** [Boman](https://t.me/BomanTriwizard)\n✣ **Grup Support :** @BOMANSTORE\n✣ **Repository :** [Boman-Userbot](https://github.com/mrismanaziz/Man-Userbot)\n➖➖➖➖➖➖➖➖➖➖",
+                    title="🌀 Tornado-Userbot 🌀",
+                    description="Tornado-Userbot | Telethon",
+                    url="https://t.me/TornadoUserbot",
+                    text="**Boman - UserBot**\n➖➖➖➖➖➖➖➖➖➖\n✣ **Owner Repo :** [Boman](https://t.me/BomanTriwizard)\n✣ **Grup Support :** @TornadoUserbot\n✣ **Repository :** [Boman-Userbot](https://github.com/Bomansyah/Tornado-Userbot)\n➖➖➖➖➖➖➖➖➖➖",
                     buttons=[
                         [
                             custom.Button.url(
                                 "Support",
-                                "https://t.me/SharingUserbot"),
+                                "https://t.me/TornadoUserbot"),
                             custom.Button.url(
                                 "Repo",
-                                "https://github.com/mrismanaziz/Man-Userbot")],
+                                "https://github.com/Bomansyah/Tornado-Userbot")],
                     ],
                     link_preview=False,
                 )
