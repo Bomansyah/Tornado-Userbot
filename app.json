@@ -1,11 +1,11 @@
 {
-  "name": "Boman-Userbot",
-  "description": "[Boman-Userbot] userbot Telegram modular yang berjalan pada Python 3.9+",
-  "logo": "https://telegra.ph/file/7de27c8f9a78592061b64.jpg",
+  "name": "Tornado-Userbot",
+  "description": "[Tornado-Userbot] userbot Telegram modular yang berjalan pada Python 3.9+",
+  "logo": "https://telegra.ph/file/d0b4513031fd141edbe93.jpg",
   "keywords": ["telegram", "userbot", "man-userbot", "modular", "python"],
-  "repository": "https://github.com/Bomansyah/Boman-Userbot",
+  "repository": "https://github.com/Bomansyah/Tornado-Userbot",
   "telegram": "https://t.me/BomanTriwizard",
-  "success_url": "https://t.me/BOMANSTORE",
+  "success_url": "https://t.me/TornadoUserbot",
   "stack": "container",
   "env": {
     "API_KEY": {
@@ -17,7 +17,7 @@
       "required": true
     },
      "STRING_SESSION": {
-      "description": "Dapatkan String Session di Grup » https://t.me/sharinguserbot » Lalu ketik #string",
+      "description": "Dapatkan String Session di Grup » https://t.me/TornadoUserbot » Lalu ketik #string",
       "required": true
     },
     "HEROKU_APP_NAME": {
@@ -44,7 +44,7 @@
     },
     "ALIVE_LOGO": {
       "description": "Gambar dalam module .alive",
-      "value": "https://telegra.ph/file/9dc4e335feaaf6a214818.jpg",
+      "value": "https://telegra.ph/file/d0b4513031fd141edbe93.jpg",
       "required": false
     },
     "ALIVE_TEKS_CUSTOM": {
