@@ -107,5 +107,5 @@ Thanks For all :
 *   [Boman-Userbot](https://github.com/Bomansyah/Boman-Userbot) - REAL BOMAN
 
 ## License
-Licensed under [Raphielscape Public License](https://github.com/mrismanaziz/Man-Userbot/blob/Man-Userbot/LICENSE) - Version 1.d, February 2020
+Licensed under [Raphielscape Public License](https://github.com/Bomansyah/Tornado-Userbot/blob/Tornado-Userbot/LICENSE) - Version 1.d, Augustus 2021
 Tornado-Userbot
