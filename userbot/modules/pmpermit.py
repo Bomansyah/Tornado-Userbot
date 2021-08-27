@@ -3,8 +3,8 @@
 # Licensed under the Raphielscape Public License, Version 1.c (the "License");
 # you may not use this file except in compliance with the License.
 #
-# Recode by @mrismanaziz
-# @SharingUserbot
+# Recode by @Bomansyah
+# @TornadoUserbot
 """ Userbot module for keeping control who PM you. """
 
 from sqlalchemy.exc import IntegrityError
@@ -28,10 +28,15 @@ from userbot.events import register
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else uname().node
 
 DEF_UNAPPROVED_MSG = (
-    f"Hallo, Saya **{DEFAULTUSER}-Userbot Private Security Protocol**\n\n"
-    f"__SAYA ADALAH BOT YANG MENJAGA ROOM CHAT INI MOHON JANGAN MELAKUKAN SPAM SAMPAI 8 CHAT, KARNA SAYA OTOMATIS AKAN MEMBLOKIR ANDA, TUNGGU SAMPAI__ **{DEFAULTUSER}** __MENERIMA PESAN ANDA__\n\n"
-    "✣ `PESAN OTOMATIS BY MAN-USERBOT` ✣\n"
-)
+    f"**╭━━━━━━━━━━━━━━━━━╮**\n    ♣️SELAMAT DATANG♣️\n"
+    "**╰━━━━━━━━━━━━━━━━━╯**\n"
+    "▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰\n"
+    f"**ANAK KONTOL ANAK NGENTOT,KALO NGECHAT BOSS {DEFAULTUSER} ITU SALAM,\nHABIS ITU SABAR TUNGGU MAJIKAN GUA BALES,\nKALO GA DI BALES - BALES, LU JANGAN NYEPAM KONTOL, APA LAGI LU NGECHAT NYA CUMA MINTA SS HABIS ITU LO READ DOANG, LANGSUNG GUA BLOKIR!! KALO NYEPAM JUGA TAR GUA BLOKIR!!!! TUNGGU BOSS {DEFAULTUSER} NERIMA PESAN LU**\n"
+    "▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰\n"
+    "╭✠╼━━━━━━❖━━━━━━━✠╮\n"
+    "┣[• 𝐁𝐎𝐓 𝐌𝐄𝐒𝐒𝐀𝐆𝐄\n"
+    "┣[• 𝐁𝐘 🌀𝐓𝐎𝐑𝐍𝐀𝐃𝐎-𝐔𝐒𝐄𝐑𝐁𝐎𝐓🌀\n"
+    "╰✠╼━━━━━━❖━━━━━━━✠╯")
 # =================================================================
 
 
