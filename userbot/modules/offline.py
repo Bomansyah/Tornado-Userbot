@@ -28,10 +28,10 @@ from userbot import (  # noqa pylint: disable=unused-import isort:skip
 
 # ========================= CONSTANTS ============================
 AFKSTR = [
-    f"**Maaf {ALIVE_NAME} Sedang OFF!**",
-    f"**Maaf {ALIVE_NAME} Sedang OFF Tunggu Sampai Online!**",
-    f"**{ALIVE_NAME} Sedang OFF Tunggulah Sampai Online**",
-    f"**Maaf {ALIVE_NAME} Sedang OFF!**",
+    f"**[𝙱𝙾𝚂𝚂 {ALIVE_NAME} 𝚂𝙴𝙳𝙰𝙽𝙶 𝙾𝙵𝙵!]**",
+    f"**[𝙱𝙾𝚂𝚂 {ALIVE_NAME} 𝚂𝙴𝙳𝙰𝙽𝙶 𝙾𝙵𝙵 𝚃𝚄𝙽𝙶𝙶𝚄 𝚂𝙰𝙼𝙿𝙰𝙸 𝙺𝙴𝙼𝙱𝙰𝙻𝙸 𝙾𝙽𝙻𝙸𝙽𝙴!]**",
+    f"**{ALIVE_NAME} 𝚂𝙴𝙳𝙰𝙽𝙶 𝙾𝙵𝙵 𝚃𝚄𝙽𝙶𝙶𝚄 𝚂𝙰𝙼𝙿𝙰𝙸 𝙺𝙴𝙼𝙱𝙰𝙻𝙸 𝙾𝙽𝙻𝙸𝙽𝙴!**",
+    f"**[𝙱𝙾𝚂𝚂 {ALIVE_NAME} 𝚂𝙴𝙳𝙰𝙽𝙶 𝚂𝙸𝙱𝚄𝙺!]**",
 ]
 
 
@@ -67,20 +67,20 @@ async def set_afk(afk_e):
     if string:
         AFKREASON = string
         await afk_e.edit(
-            f"**✘ {ALIVE_NAME} Telah OFF ✘**\
+            f"**[𝙱𝙾𝚂𝚂 {ALIVE_NAME} 𝚃𝙴𝙻𝙰𝙷 𝙾𝙵𝙵🚫**\
         \n✦҈͜͡➳ **Karena :** `{string}`"
         )
     else:
-        await afk_e.edit(f"**✘ {ALIVE_NAME} Telah OFF ✘**")
+        await afk_e.edit(f"**[𝙱𝙾𝚂𝚂 {ALIVE_NAME} 𝚃𝙴𝙻𝙰𝙷 𝙾𝙵𝙵🚫**")
     if user.last_name:
         await afk_e.client(
             UpdateProfileRequest(
-                first_name=user.first_name, last_name=user.last_name + "【 OFF 】"
+                first_name=user.first_name, last_name=user.last_name + "[ OFF ]"
             )
         )
     else:
         await afk_e.client(
-            UpdateProfileRequest(first_name=user.first_name, last_name="【 OFF 】")
+            UpdateProfileRequest(first_name=user.first_name, last_name="[ OFF ]")
         )
     if BOTLOG:
         await afk_e.client.send_message(
@@ -104,7 +104,7 @@ async def type_afk_is_not_true(notafk):
     global afk_end
     user = await bot.get_me()  # pylint:disable=E0602
     last = user.last_name
-    if last and last.endswith("【 OFF 】"):
+    if last and last.endswith("[ OFF ]"):
         last1 = last[:-12]
     else:
         last1 = ""
@@ -112,7 +112,7 @@ async def type_afk_is_not_true(notafk):
     afk_end = back_alive.replace(microsecond=0)
     if ISAFK:
         ISAFK = False
-        msg = await notafk.respond(f"**{ALIVE_NAME} Telah Kembali!**")
+        msg = await notafk.respond(f"**[𝙱𝙾𝚂𝚂 {ALIVE_NAME} 𝚃𝙴𝙻𝙰𝙷 𝙺𝙴𝙼𝙱𝙰𝙻𝙸!]**")
         time.sleep(7)
         await msg.delete()
         await notafk.client(
@@ -160,7 +160,7 @@ async def mention_afk(mention):
     user = await bot.get_me()  # pylint:disable=E0602
     back_alivee = datetime.now()
     afk_end = back_alivee.replace(microsecond=0)
-    afk_since = "**Terakhir Online**"
+    afk_since = "**𝚃𝙴𝚁𝙰𝙺𝙷𝙸𝚁 𝙾𝙽𝙻𝙸𝙽𝙴**"
     if mention.message.mentioned and not (await mention.get_sender()).bot and ISAFK:
         now = datetime.now()
         datime_since_afk = now - afk_time  # pylint:disable=E0602
@@ -173,7 +173,7 @@ async def mention_afk(mention):
         time %= 60
         seconds = time
         if days == 1:
-            afk_since = "**Kemarin**"
+            afk_since = "**𝙺𝙴𝙼𝙰𝚁𝙸𝙽**"
         elif days > 1:
             if days > 6:
                 date = now + datetime.timedelta(
@@ -192,7 +192,7 @@ async def mention_afk(mention):
         if mention.sender_id not in USERS:
             if AFKREASON:
                 await mention.reply(
-                    f"**✘ {ALIVE_NAME} Sedang OFF ✘** {afk_since} **Yang Lalu.**\
+                    f"**[𝙱𝙾𝚂𝚂 {ALIVE_NAME} 𝚂𝙴𝙳𝙰𝙽𝙶 𝙾𝙵𝙵 ]** {afk_since} **𝚈𝚊𝚗𝚐 𝚕𝚊𝚕𝚞.**\
                         \n✦҈͜͡➳ **Karena :** `{AFKREASON}`"
                 )
             else:
@@ -202,7 +202,7 @@ async def mention_afk(mention):
             if USERS[mention.sender_id] % randint(2, 4) == 0:
                 if AFKREASON:
                     await mention.reply(
-                        f"**✘ {ALIVE_NAME} Masih OFF ✘** {afk_since} **Yang Lalu.**\
+                        f"**[𝙱𝙾𝚂𝚂 {ALIVE_NAME} 𝙼𝙰𝚂𝙸𝙷 𝙾𝙵𝙵 ]** {afk_since} **𝚈𝚊𝚗𝚐 𝚕𝚊𝚕𝚞.**\
                             \n✦҈͜͡➳ **Karena :** `{AFKREASON}`"
                     )
                 else:
@@ -254,7 +254,7 @@ async def afk_on_pm(sender):
             time %= 60
             seconds = time
             if days == 1:
-                afk_since = "**Kemarin**"
+                afk_since = "**𝙺𝙴𝙼𝙰𝚁𝙸𝙽**"
             elif days > 1:
                 if days > 6:
                     date = now + datetime.timedelta(
@@ -273,7 +273,7 @@ async def afk_on_pm(sender):
             if sender.sender_id not in USERS:
                 if AFKREASON:
                     await sender.reply(
-                        f"✘ **{ALIVE_NAME} Sedang OFF ✘** {afk_since} **Yang Lalu** ✘.\
+                        f"[𝙱𝙾𝚂𝚂 **{ALIVE_NAME} 𝚂𝙴𝙳𝙰𝙽𝙶 𝙾𝙵𝙵 ]** {afk_since} **𝚈𝚊𝚗𝚐 𝚕𝚊𝚕𝚞** ⛔.\
                         \n✦҈͜͡➳ **Karena :** `{AFKREASON}`"
                     )
                 else:
@@ -284,7 +284,7 @@ async def afk_on_pm(sender):
                 if USERS[sender.sender_id] % randint(2, 4) == 0:
                     if AFKREASON:
                         await sender.reply(
-                            f"✘ **{ALIVE_NAME} Sedang OFF ✘** {afk_since} **Yang Lalu. ✘**\
+                            f"[𝙱𝙾𝚂𝚂 **{ALIVE_NAME} 𝚂𝙴𝙳𝙰𝙽𝙶 𝙾𝙵𝙵 ]** {afk_since} **𝚈𝚊𝚗𝚐 𝚕𝚊𝚕𝚞. ⛔**\
                             \n✦҈͜͡➳ **Karena :** `{AFKREASON}`"
                         )
                     else:
