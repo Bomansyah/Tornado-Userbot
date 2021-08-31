@@ -99,9 +99,9 @@ async def update(event, repo, ups_rem, ac_br):
         ups_rem.pull(ac_br)
     except GitCommandError:
         repo.git.reset("--hard", "FETCH_HEAD")
-    await event.edit("**✥ Boman-Userbot** `Berhasil Di Update!`")
+    await event.edit("**『Tornado-Userbot』** `Berhasil Di Update!`")
     await asyncio.sleep(1)
-    await event.edit("**✥ Boman-Userbot** `Sedang di Restart....`")
+    await event.edit("**『Tornado-Userbot』** `Sedang di Restart....`")
     await asyncio.sleep(1)
     await event.edit("`Tunggu Beberapa Detik `")
     await asyncio.sleep(10)
