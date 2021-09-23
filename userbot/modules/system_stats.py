@@ -317,7 +317,7 @@ async def amireallyalive(alive):
         f"{ALIVE_EMOJI} **Python Version :** `{python_version()}` \n"
         f"{ALIVE_EMOJI} **Telethon Version :** `{version.__version__}` \n"
         f"{ALIVE_EMOJI} **Bot Uptime :** `{uptime}` \n\n"
-        "    **[𝗦𝘂𝗽𝗽𝗼𝗿𝘁](https://t.me/TornadoUserbot)** | **[𝗖𝗵𝗮𝗻𝗻𝗲𝗹](https://t.me/BOMANSTORE)** | **[𝗢𝘄𝗻𝗲𝗿](t.me/BomanTriwizard)**"
+        "    **[𝐖𝐡𝐚𝐭𝐬𝐚𝐩𝐩](https://wa.me/082261366330)** | **[𝐈𝐧𝐬𝐭𝐚𝐠𝐫𝐚𝐦](https://www.instagram.com/ridwansyah_boman)** | **[𝗢𝘄𝗻𝗲𝗿](t.me/MobileLegends_Diamond)**"
     )
     if ALIVE_LOGO:
         try:
