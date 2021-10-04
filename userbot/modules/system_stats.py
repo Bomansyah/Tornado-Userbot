@@ -243,7 +243,7 @@ async def amireallyalive(alive):
         f"┗━━━━━━━━━━━━━━━━ \n"
         f"⚡️ **Repo Userbot :** [Tornado-Userbot](https://github.com/Bomansyah/Tornado-Userbot) \n"
         f"⚡️ **Grup Userbot :** [Tekan Disini](https://t.me/TornadoUserbot) \n"
-        f"⚡️ **Owner :** [RealBoman](t.me/BomanTriwizard) \n"
+        f"⚡️ **Owner :** [◨𝙶𝙴𝙽𝚂𝙷𝙸𝙽☄ＡＳＩＡ≑](t.me/GensinHunter) \n"
     )
     if ALIVE_LOGO:
         try:
@@ -317,7 +317,7 @@ async def amireallyalive(alive):
         f"{ALIVE_EMOJI} **Python Version :** `{python_version()}` \n"
         f"{ALIVE_EMOJI} **Telethon Version :** `{version.__version__}` \n"
         f"{ALIVE_EMOJI} **Bot Uptime :** `{uptime}` \n\n"
-        "    **[𝐖𝐡𝐚𝐭𝐬𝐚𝐩𝐩](https://wa.me/082261366330)** | **[𝐈𝐧𝐬𝐭𝐚𝐠𝐫𝐚𝐦](https://www.instagram.com/ridwansyah_boman)** | **[𝗢𝘄𝗻𝗲𝗿](t.me/MobileLegends_Diamond)**"
+        "    **[𝐖𝐡𝐚𝐭𝐬𝐚𝐩𝐩](https://wa.me/082261366330)** | **[𝐈𝐧𝐬𝐭𝐚𝐠𝐫𝐚𝐦](https://www.instagram.com/ridwansyah_boman)** | **[𝗢𝘄𝗻𝗲𝗿](t.me/GenshinHunter)**"
     )
     if ALIVE_LOGO:
         try:
