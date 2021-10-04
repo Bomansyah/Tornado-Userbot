@@ -26,7 +26,7 @@ Di Group [TornadoUserbot](https://t.me/TornadoUserbot)
 
 ## Updates dan support
 
-Contact Owner [㊙𝖬𝖫𝖡𝖡 𝖣𝖨𝖠𝖬𝖮𝖭𝖣](https://t.me/MobileLegends_Diamond) untuk info Update bot dan Gabung Group [TornadoUserbot](https://t.me/TornadoUserbot) untuk untuk diskusi, pelaporan bug, dan bantuan tentang Tornado-Userbot.
+Contact Owner [◨𝙶𝙴𝙽𝚂𝙷𝙸𝙽☄ＡＳＩＡ≑](https://t.me/GenshinHunter) untuk info Update bot dan Gabung Group [TornadoUserbot](https://t.me/TornadoUserbot) untuk untuk diskusi, pelaporan bug, dan bantuan tentang Tornado-Userbot.
 
 ## Credits
 Thanks For all :
