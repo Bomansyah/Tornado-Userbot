@@ -45,7 +45,7 @@ Thanks For all :
 *   [Kampang-Bot](https://github.com/ManusiaRakitan/Kampang-Bot) - Koala
 *   [X-REMIX](https://github.com/ximfine) -  X_ImFine
 *   [Man-Userbot](https://github.com/mrismanaziz/Man-Userbot) -  Risman
-*   [Boman-Userbot](https://github.com/Bomansyah/Boman-Userbot) - ❖ 𝙏▱𝙎▱ 𝘼▱ 𝙓 𝙒𝘼𝙉
+*   [Boman-Userbot](https://github.com/Bomansyah/Boman-Userbot) - ◨𝙶𝙴𝙽𝚂𝙷𝙸𝙽☄ＡＳＩＡ≑
 
 ## License
 Licensed under [Raphielscape Public License](https://github.com/mrismanaziz/Man-Userbot/blob/Man-Userbot/LICENSE) - Version 1.d, February 2020
