@@ -93,7 +93,7 @@ async def permitpm(event):
 
             if COUNT_PM[event.chat_id] > 6:
                 await event.respond(
-                    "**Maaf Anda Telah Di Blokir Karna Melakukan Spam Chat*"
+                    "𝙶𝙰𝙺 𝚄𝚂𝙰𝙷 𝙳𝙸𝚂𝙿𝙰𝙼 𝙹𝙰𝙽𝙲𝙾𝙺, 𝙼𝙰𝙼𝙿𝚄𝚂 𝙺𝙴𝙱𝙻𝙾𝙲𝙺"
                 )
 
                 try:
@@ -120,7 +120,7 @@ async def permitpm(event):
                         + "](tg://user?id="
                         + str(event.chat_id)
                         + ")"
-                        + " **Telah Diblokir Karna Melakukan Spam Ke Room Chat**",
+                        + " **𝙼𝙰𝙼𝙿𝚄𝚂 𝙻𝚄 𝙱𝙰𝙽𝚈𝚂𝙰𝚃**",
                     )
 
 
