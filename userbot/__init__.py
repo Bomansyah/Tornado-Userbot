@@ -3,9 +3,8 @@
 # Licensed under the Raphielscape Public License, Version 1.d (the "License");
 # you may not use this file except in compliance with the License.
 #
-# inline credit @keselekpermen69
-# Recode by @BomanTriwizard
-# t.me/TornadoUserbot
+# inline credit @GenshinHunter
+# t.me/TornadoComunity
 #
 """ Userbot initialization. """
 
@@ -91,7 +90,7 @@ BOTLOG = sb(os.environ.get("BOTLOG", "True"))
 LOGSPAMMER = sb(os.environ.get("LOGSPAMMER", "True"))
 
 # Bleep Blop, this is a bot ;)
-PM_AUTO_BAN = sb(os.environ.get("PM_AUTO_BAN", "False"))
+PM_AUTO_BAN = sb(os.environ.get("PM_AUTO_BAN", "True"))
 
 # Heroku Credentials for updater.
 HEROKU_APP_NAME = os.environ.get("HEROKU_APP_NAME", None)
@@ -160,7 +159,7 @@ ALIVE_TEKS_CUSTOM = os.environ.get(
 ALIVE_NAME = os.environ.get("ALIVE_NAME", None)
 
 # Custom Emoji Alive
-ALIVE_EMOJI = os.environ.get("ALIVE_EMOJI", "⚡️")
+ALIVE_EMOJI = os.environ.get("ALIVE_EMOJI", "🇮🇩")
 
 # Custom icon HELP
 ICON_HELP = os.environ.get("ICON_HELP", "❉")
@@ -192,7 +191,7 @@ S_PACK_NAME = os.environ.get("S_PACK_NAME", "ini stikerku")
 
 # Default .alive logo
 ALIVE_LOGO = os.environ.get(
-    "ALIVE_LOGO") or "https://telegra.ph/file/d0b4513031fd141edbe93.jpg"
+    "ALIVE_LOGO") or "https://telegra.ph/file/1b1df41c7aa9bbc6834e3.jpg"
 
 # Last.fm Module
 BIO_PREFIX = os.environ.get("BIO_PREFIX", None)
@@ -423,18 +422,18 @@ with bot:
         async def handler(event):
             await event.message.get_sender()
             text = (
-                f"**Hey**, __I am using__ 🚀Tornado-Userbot🚀\n\n"
+                f"**Hey**, __I am using__ ⚙️Tornado-Userbot⚙️\n\n"
                 f"       __Thanks For Using me__\n\n"
                 f"✣ **Userbot Version :** `{BOT_VER}@{UPSTREAM_REPO_BRANCH}`\n"
-                f"✣ **Group Support :** [Sharing Userbot](t.me/TornadoUserbot)\n"
-                f"✣ **Owner Repo :** [REAL BOMAN](t.me/BomanTriwizard)\n"
+                f"✣ **Group Support :** [Tornado User-bot](t.me/TornadoComunity)\n"
+                f"✣ **Owner Repo :** [◨𝙶𝙴𝙽𝚂𝙷𝙸𝙽☄ＡＳＩＡ≑](t.me/GenshinHunter)\n"
                 f"✣ **Repo :** [Tornado-Userbot](https://github.com/Bomansyah/Tornado-Userbot)\n")
             await tgbot.send_file(event.chat_id, logo, caption=text,
                                   buttons=[
                                       [
                                           custom.Button.url(
                                               text="⛑ Group Support ⛑",
-                                              url="https://t.me/TornadoUserbot"
+                                              url="https://t.me/TornadoComunity"
                                           )
                                       ]
                                   ]
@@ -461,12 +460,12 @@ with bot:
                     title="Repository",
                     description="Repository Tornado-Userbot",
                     url="https://t.me/TornadoUserbot",
-                    text="**Boman - UserBot**\n➖➖➖➖➖➖➖➖➖➖\n✣ **Owner Repo :** [Boman](https://t.me/BomanTriwizard)\n✣ **Grup Support :** @TornadoUserbot\n✣ **Repository :** [Tornado-Userbot](https://github.com/Bomansyah/Tornado-Userbot)\n➖➖➖➖➖➖➖➖➖➖",
+                    text="**Tornado - UserBot**\n➖➖➖➖➖➖➖➖➖➖\n✣ **Owner Repo :** [◨𝙶𝙴𝙽𝚂𝙷𝙸𝙽☄ＡＳＩＡ≑](https://t.me/GenshinHunter)\n✣ **Grup Support :** @TornadoComunity\n✣ **Repository :** [Tornado-Userbot](https://github.com/Bomansyah/Tornado-Userbot)\n➖➖➖➖➖➖➖➖➖➖",
                     buttons=[
                         [
                             custom.Button.url(
                                 "Support",
-                                "https://t.me/TornadoUserbot"),
+                                "https://t.me/TornadoComunity"),
                             custom.Button.url(
                                 "Repo",
                                 "https://github.com/Bomansyah/Tornado-Userbot")],
@@ -474,10 +473,10 @@ with bot:
                     link_preview=False)
             else:
                 result = builder.article(
-                    title="🌀 Tornado-Userbot 🌀",
+                    title="࿇ Tornado-Userbot ࿇",
                     description="Tornado-Userbot | Telethon",
-                    url="https://t.me/TornadoUserbot",
-                    text="**Boman - UserBot**\n➖➖➖➖➖➖➖➖➖➖\n✣ **Owner Repo :** [Boman](https://t.me/BomanTriwizard)\n✣ **Grup Support :** @TornadoUserbot\n✣ **Repository :** [Boman-Userbot](https://github.com/Bomansyah/Tornado-Userbot)\n➖➖➖➖➖➖➖➖➖➖",
+                    url="https://t.me/TornadoComunity",
+                    text="**Tornado - UserBot**\n➖➖➖➖➖➖➖➖➖➖\n✣ **Owner Repo :** [◨𝙶𝙴𝙽𝚂𝙷𝙸𝙽☄ＡＳＩＡ≑](https://t.me/GenshinHunter)\n✣ **Grup Support :** @TornadoComunity\n✣ **Repository :** [Tornado-Userbot](https://github.com/Bomansyah/Tornado-Userbot)\n➖➖➖➖➖➖➖➖➖➖",
                     buttons=[
                         [
                             custom.Button.url(
