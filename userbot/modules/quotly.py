@@ -86,7 +86,7 @@ async def quotess(qotli):
         await qotli.edit()
 
 
-@register(outgoing=True, pattern=r"^\.xquote(?: |$)(.*)")
+@register(outgoing=True, pattern=r"^\.qx(?: |$)(.*)")
 async def quote_search(event):
     if event.fwd_from:
         return
@@ -117,7 +117,7 @@ CMD_HELP.update(
         "quotly": "**Plugin : **`quotly`\
         \n\n  •  **Syntax :** `.q`\
         \n  •  **Function : **Membuat pesan mu menjadi sticker.\
-        \n\n  •  **Syntax :** `.xquote`\
+        \n\n  •  **Syntax :** `.xq`\
         \n  •  **Function : **Membuat pesan mu menjadi sticker.\
     "
     }
