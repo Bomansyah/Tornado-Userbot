@@ -309,7 +309,7 @@ async def amireallyalive(alive):
     await bot.get_me()
     uptime = await get_readable_time((time.time() - StartTime))
     output = (
-        f"**[Boman-Userbot](https://github.com/Bomansyah/Boman-Userbot) is Up and Running.**\n\n"
+        f"**[Tornado-Userbot](https://github.com/Bomansyah/Tornado-Userbot) is Up and Running.**\n\n"
         f"**{ALIVE_TEKS_CUSTOM}**\n\n"
         f"{ALIVE_EMOJI} **Master :** `{DEFAULTUSER}` \n"
         f"{ALIVE_EMOJI} **Modules :** `{len(modules)} Modules` \n"
