@@ -1,11 +1,11 @@
 {
   "name": "Tornado-Userbot",
   "description": "[Tornado-Userbot] userbot Telegram modular yang berjalan pada Python 3.9+",
-  "logo": "https://telegra.ph/file/d0b4513031fd141edbe93.jpg",
-  "keywords": ["telegram", "userbot", "man-userbot", "modular", "python"],
+  "logo": "https://telegra.ph/file/1b1df41c7aa9bbc6834e3.jpg",
+  "keywords": ["telegram", "userbot", "Tornado-userbot", "modular", "python"],
   "repository": "https://github.com/Bomansyah/Tornado-Userbot",
-  "telegram": "https://t.me/TSAxWAN",
-  "success_url": "https://t.me/TornadoUserbot",
+  "telegram": "https://t.me/GenshinHunter",
+  "success_url": "https://t.me/TornadoComunity",
   "stack": "container",
   "env": {
     "API_KEY": {
@@ -35,7 +35,7 @@
     },
     "PM_AUTO_BAN": {
       "description": "PM Auto-Ban adalah module untuk bot welcome otomatis ketika ada orang ngePC kamu,jika Mau di aktifkan ubah ke True",
-      "value": "False",
+      "value": "true",
       "required": false
     },
     "ALIVE_NAME": {
@@ -44,7 +44,7 @@
     },
     "ALIVE_LOGO": {
       "description": "Gambar dalam module .alive",
-      "value": "https://telegra.ph/file/d0b4513031fd141edbe93.jpg",
+      "value": "https://telegra.ph/file/1b1df41c7aa9bbc6834e3.jpg",
       "required": false
     },
     "ALIVE_TEKS_CUSTOM": {
