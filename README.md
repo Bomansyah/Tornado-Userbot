@@ -1,5 +1,5 @@
 # Tornado-Userbot
-![Tornado-Userbot Logo](https://telegra.ph/file/d0b4513031fd141edbe93.jpg)
+![Tornado-Userbot Logo](https://telegra.ph/file/1b1df41c7aa9bbc6834e3.jpg)
 
 # Tornado-Userbot Telegram
 
