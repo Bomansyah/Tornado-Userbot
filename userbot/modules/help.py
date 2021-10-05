@@ -35,6 +35,7 @@ async def help(event):
             f"**✦ Owner:** `{ALIVE_NAME}`\n\n"
             f"{ICON_HELP}  {string}"
             "\n\nSupport @TornadoComunity"
+            "\n\nOwner @GenshinHunter
         )
         await event.reply(
             "\n**Contoh Ketik** `.help afk` **Untuk Melihat Informasi Module**"
