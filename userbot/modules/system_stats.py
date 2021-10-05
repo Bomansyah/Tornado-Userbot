@@ -242,7 +242,7 @@ async def amireallyalive(alive):
         f"┣ ✥ `Uptime   : `{uptime} \n"
         f"┗━━━━━━━━━━━━━━━━ \n"
         f"⚡️ **Repo Userbot :** [Tornado-Userbot](https://github.com/Bomansyah/Tornado-Userbot) \n"
-        f"⚡️ **Grup Userbot :** [Tekan Disini](https://t.me/TornadoUserbot) \n"
+        f"⚡️ **Grup Userbot :** [Tekan Disini](https://t.me/TornadoComunity) \n"
         f"⚡️ **Owner :** [◨𝙶𝙴𝙽𝚂𝙷𝙸𝙽☄ＡＳＩＡ≑](t.me/GensinHunter) \n"
     )
     if ALIVE_LOGO:
