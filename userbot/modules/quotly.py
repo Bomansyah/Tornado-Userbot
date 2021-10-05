@@ -117,7 +117,7 @@ CMD_HELP.update(
         "quotly": "**Plugin : **`quotly`\
         \n\n  •  **Syntax :** `.q`\
         \n  •  **Function : **Membuat pesan mu menjadi sticker.\
-        \n\n  •  **Syntax :** `.xq`\
+        \n\n  •  **Syntax :** `.qx`\
         \n  •  **Function : **Membuat pesan mu menjadi sticker.\
     "
     }
