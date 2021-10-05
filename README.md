@@ -29,22 +29,6 @@ Di Group [TornadoUserbot](https://t.me/TornadoComunity)
 Contact Owner [◨𝙶𝙴𝙽𝚂𝙷𝙸𝙽☄ＡＳＩＡ≑](https://t.me/GenshinHunter) untuk info Update bot dan Gabung Group [TornadoUserbot](https://t.me/TornadoComunity) untuk untuk diskusi, pelaporan bug, dan bantuan tentang Tornado-Userbot.
 
 ## Credits
-Thanks For all :
-*   [RaphielGang](https://github.com/RaphielGang) - Telegram-Paperplane
-*   [AvinashReddy3108](https://github.com/AvinashReddy3108) - PaperplaneExtended
-*   [Mkaraniya](https://github.com/mkaraniya) & [Dev73](https://github.com/Devp73) - OpenUserBot
-*   [Mr.Miss](https://github.com/keselekpermen69) - UserButt
-*   [adekmaulana](https://github.com/adekmaulana) - ProjectBish
-*   [MoveAngel](https://github.com/MoveAngel) - One4uBot
-*   [AidilAryanto](https://github.com/aidilaryanto) - ProjectDils 
-*   [Alfianandaa](https://github.com/alfianandaa/ProjectAlf) - ProjectAlf
-*   [AnggaR69s](https://github.com/GengKapak/DCLXVI) - DCLXVI
-*   [BianSepang](https://github.com/BianSepang/WeebProject) - WeebProject
-*   [TeamUserge](https://github.com/UsergeTeam/Userge) - Userge
-*   [Lord-Userbot](https://github.com/Zora24/Lord-Userbot) - Alvin
-*   [Kampang-Bot](https://github.com/ManusiaRakitan/Kampang-Bot) - Koala
-*   [X-REMIX](https://github.com/ximfine) -  X_ImFine
-*   [Man-Userbot](https://github.com/mrismanaziz/Man-Userbot) -  Risman
 *   [Tornado-Userbot](https://github.com/Bomansyah/Tornado-Userbot) - ◨𝙶𝙴𝙽𝚂𝙷𝙸𝙽☄ＡＳＩＡ≑
 
 ## License
