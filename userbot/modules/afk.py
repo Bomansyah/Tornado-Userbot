@@ -1,6 +1,4 @@
-# Copyright (C) 2020 TeamUltroid
-# Ported by X_ImFine
-# Recode by @mrismanaziz
+# Recode By @GenshinHunter
 
 import asyncio
 import os
