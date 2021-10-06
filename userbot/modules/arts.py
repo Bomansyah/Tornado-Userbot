@@ -1,5 +1,5 @@
-# @mrismanaziz
-# t.me/sharinguserbot
+# @GenshinHunter
+# t.me/TornadoComunity
 
 from userbot import CMD_HELP
 from userbot.events import register
