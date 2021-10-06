@@ -1,7 +1,6 @@
 # Credit by https://github.com/sandy1709/catuserbot
-# Ported by @X_ImFine
-# Recode by @mrismanaziz
-# @SharingUserbot
+# Ported by @GenshinHunter
+# @TornadoComunity
 
 import base64
 from asyncio import sleep
