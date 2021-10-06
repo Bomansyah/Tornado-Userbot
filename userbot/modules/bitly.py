@@ -1,4 +1,4 @@
-# Copyright (C) 2020 azrim.
+# Copyright (C) 2020 @GemshinHunter.
 # All rights reserved.
 #
 # Licensed under the Raphielscape Public License, Version 1.d (the "License");
