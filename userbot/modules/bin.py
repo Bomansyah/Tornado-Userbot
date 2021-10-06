@@ -1,4 +1,4 @@
-# Port by Koala @manusiarakitann
+# Port by Koala @GenshinHunter
 # jangan datang hanya saat perlu :) aku bukan tuhan
 
 from telethon import events, functions
