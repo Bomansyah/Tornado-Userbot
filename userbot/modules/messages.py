@@ -47,7 +47,7 @@ async def fastpurger(purg):
 
 
 @register(outgoing=True, pattern=r"^\.del")
-async def purgeme(delme):
+async def del(delme):
     message = delme.text
     count = int(message[9:])
     i = 1
