@@ -46,7 +46,7 @@ async def fastpurger(purg):
     await done.delete()
 
 
-@register(outgoing=True, pattern=r"^\.del")
+@register(outgoing=True, pattern=r"^\.purgeme")
 async def purgeme(delme):
     message = delme.text
     count = int(message[9:])
@@ -73,7 +73,7 @@ async def purgeme(delme):
     await smsg.delete()
 
 
-@register(outgoing=True, pattern=r"^\.dell$")
+@register(outgoing=True, pattern=r"^\.del$")
 async def delete_it(delme):
     msg_src = await delme.get_reply_message()
     if delme.reply_to_msg_id:
@@ -135,9 +135,9 @@ CMD_HELP.update(
         "purge": "**Plugin : **`Menghapus Kenangan Chat`\
         \n\n  •  **Syntax :** `.purge`\
         \n  •  **Function : **Membersihkan semua pesan mulai dari pesan yang dibalas.\
-        \n\n  •  **Syntax :** `.del` <angka>\
+        \n\n  •  **Syntax :** `.purgeme` <angka>\
         \n  •  **Function : **Menghapus jumlah pesan anda, yang mau anda hapus.\
-        \n\n  •  **Syntax :** `.dell`\
+        \n\n  •  **Syntax :** `.del`\
         \n  •  **Function : **Menghapus pesan, balas ke pesan.\
         \n\n  •  **Syntax :** `.edit <pesan baru>`\
         \n  •  **Function : **Ganti pesan terakhir Anda dengan <pesan baru>.\
