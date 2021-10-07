@@ -119,7 +119,7 @@ async def permitpm(event):
                         + "](tg://user?id="
                         + str(event.chat_id)
                         + ")"
-                        + " **𝙼𝙰𝙼𝙿𝚄𝚂 𝙻𝚄 𝙱𝙰𝙽𝚈𝚂𝙰𝚃**",
+                        + " **𝙼𝙰𝙼𝙿𝚄𝚂 𝙻𝚄 𝙱𝙰𝙽𝙶𝚂𝙰𝚃**",
                     )
 
 
@@ -171,7 +171,7 @@ async def auto_accept(event):
                     )
 
 
-@register(outgoing=True, pattern=r"^\.notifoff$")
+@register(outgoing=True, pattern=r"^\.nof$")
 async def notifoff(noff_event):
     """For .notifoff command, stop getting notifications from unapproved PMs."""
     try:
@@ -184,7 +184,7 @@ async def notifoff(noff_event):
     )
 
 
-@register(outgoing=True, pattern=r"^\.notifon$")
+@register(outgoing=True, pattern=r"^\.non$")
 async def notifon(non_event):
     """For .notifoff command, get notifications from unapproved PMs."""
     try:
@@ -249,9 +249,9 @@ async def approvepm(apprvpm):
     try:
         approve(uid)
     except IntegrityError:
-        return await apprvpm.edit(f"`ｈｅｌｌｏ👋` [{name0}](tg://user?id={uid}) `𝚈𝚘𝚞𝚛  𝙼𝚎𝚜𝚜𝚊𝚐𝚎 𝙷𝚊𝚜 𝙱𝚎𝚎𝚗 𝚁𝚎𝚌𝚎𝚒𝚟𝚎𝚍 ✔`")
+        return await apprvpm.edit(f"`𝙾𝙺𝙴` [{name0}](tg://user?id={uid}) `𝙿𝚎𝚜𝚊𝚗 𝙰𝚗𝚍𝚊 𝚂𝚞𝚍𝚊𝚑 𝙳𝚒𝚝𝚎𝚛𝚒𝚖𝚊✔`")
 
-    await apprvpm.edit(f"`ｈｅｌｌｏ👋` [{name0}](tg://user?id={uid}) `𝚈𝚘𝚞𝚛  𝙼𝚎𝚜𝚜𝚊𝚐𝚎 𝙷𝚊𝚜 𝙱𝚎𝚎𝚗 𝚁𝚎𝚌𝚎𝚒𝚟𝚎𝚍 ✔`")
+    await apprvpm.edit(f"`𝙾𝙺𝙴` [{name0}](tg://user?id={uid}) `𝙿𝚎𝚜𝚊𝚗 𝙰𝚗𝚍𝚊 𝚂𝚞𝚍𝚊𝚑 𝙳𝚒𝚝𝚎𝚛𝚒𝚖𝚊✔`")
 
     if BOTLOG:
         await apprvpm.client.send_message(
@@ -307,7 +307,7 @@ async def disapprovepm(disapprvpm):
         aname = aname.id
 
     await disapprvpm.edit(
-        f"`Ｓｏｒｒｙ👋` [{name0}](tg://user?id={aname}) `𝚈𝚘𝚞𝚛  𝚖𝚎𝚜𝚜𝚊𝚐𝚎  𝚑𝚊𝚜  𝚋𝚎𝚎𝚗  𝚛𝚎𝚓𝚎𝚌𝚝𝚎𝚍 , 𝙳𝚘𝚗'𝚝 𝚜𝚙𝚊𝚖  𝚒𝚗  𝚝𝚑𝚎  𝚌𝚑𝚊𝚝  𝚛𝚘𝚘𝚖 🙏`"
+        f"`𝙼𝙰𝙰𝙵` [{name0}](tg://user?id={aname}) `𝙿𝚎𝚜𝚊𝚗 𝙰𝚗𝚍𝚊 𝙳𝚒𝚝𝚘𝚕𝚊𝚔  , 𝙹𝚊𝚗𝚐𝚊𝚗 𝙼𝚎𝚕𝚊𝚔𝚞𝚔𝚊𝚗 𝚂𝚙𝚊𝚖 𝙳𝚒 𝚁𝚘𝚘𝚖 𝙲𝚑𝚊𝚝 🙏`"
     )
 
     if BOTLOG:
@@ -443,9 +443,9 @@ CMD_HELP.update(
         \n  •  **Function : **Memblokir Orang Di PM.\
         \n\n  •  **Syntax :** `.unblock`\
         \n  •  **Function : **Membuka Blokir.\
-        \n\n  •  **Syntax :** `.notifoff`\
+        \n\n  •  **Syntax :** `.nof`\
         \n  •  **Function : **Menghidupkan notifikasi pesan yang belum diterima.\
-        \n\n  •  **Syntax :** `.notifon`\
+        \n\n  •  **Syntax :** `.non`\
         \n  •  **Function : **Menghidupkan notifikasi pesan yang belum diterima.\
         \n\n  •  **Syntax :** `.set pmpermit` <balas ke pesan>\
         \n  •  **Function : **Menyetel Pesan Pribadimu untuk orang yang pesannya belum diterima.\
