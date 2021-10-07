@@ -11,7 +11,7 @@ DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else uname().node
 async def usit(e):
     await e.edit(
         f"**Hai {DEFAULTUSER} Kalo Anda Tidak Tau Perintah Untuk Memerintah Ku Ketik** `.help` Atau Bisa Minta Bantuan Ke:\n"
-        "\n[Telegram](t.me/BomanTriwizard)"
+        "\n[Telegram](t.me/GenshinHunter)"
         "\n[Repo](https://github.com/Bomansyah/Tornado-Userbot)"
         "\n[Instagram](Instagram.com/ridwansyah_boman)"
     )
