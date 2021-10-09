@@ -1,11 +1,11 @@
 FROM mrismanaziz/man-userbot:buster
 
 RUN git clone -b Tornado-Userbot https://github.com/Bomansyah/Tornado-Userbot /root/userbot
-    && chmod 777 /home/manuserbot \
-    && mkdir /home/manuserbot/bin/
+RUN mkdir /root/userbot/.bin
+RUN pip install --upgrade pip setuptools
+WORKDIR /root/userbot
 
-COPY ./sample_config.env ./config.env* /home/manuserbot/
+#Install python requirements
+RUN pip3 install -r https://raw.githubusercontent.com/tofikdn/Man-Userbot/Man-Userbot/requirements.txt
 
-WORKDIR /home/manuserbot/
-
-CMD ["python3", "-m", "userbot"]
+CMD ["python3","-m","userbot"]
