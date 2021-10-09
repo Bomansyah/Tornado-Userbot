@@ -1,4 +1,3 @@
-# We're using Ubuntu 20.10
 FROM mrismanaziz/man-userbot:buster
 
 RUN git clone -b Tornado-Userbot https://github.com/Bomansyah/Tornado-Userbot /root/userbot
