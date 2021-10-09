@@ -9,8 +9,9 @@
 """ Userbot initialization. """
 
 import os
-import time
 import re
+import sys
+import time
 
 from sys import version_info
 from logging import basicConfig, getLogger, INFO, DEBUG
@@ -25,6 +26,7 @@ from redis import StrictRedis
 from dotenv import load_dotenv
 from requests import get
 from telethon.sync import TelegramClient, custom, events
+from telethon.network.connection.tcpabridged import ConnectionTcpAbridged
 from telethon.sessions import StringSession
 
 from .storage import Storage
@@ -47,18 +49,18 @@ CONSOLE_LOGGER_VERBOSE = sb(os.environ.get("CONSOLE_LOGGER_VERBOSE", "False"))
 
 if CONSOLE_LOGGER_VERBOSE:
     basicConfig(
-        format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
+        format="[%(name)s] - [%(levelname)s] - %(message)s",
         level=DEBUG,
     )
 else:
-    basicConfig(format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
+    basicConfig(format="[%(name)s] - [%(levelname)s] - %(message)s",
                 level=INFO)
 LOGS = getLogger(__name__)
 
-if version_info[0] < 3 or version_info[1] < 8:
-    LOGS.info("Anda HARUS memiliki versi python setidaknya 3.8."
-              "Beberapa fitur tergantung pada ini. Bot berhenti.")
-    quit(1)
+if version_info[0] < 3 or version_info[1] < 9:
+    LOGS.info("Anda HARUS memiliki python setidaknya versi 3.9."
+              "Beberapa fitur tergantung versi python ini. Bot berhenti.")
+    sys.exit(1)
 
 # Check if the config was edited by using the already used variable.
 # Basically, its the 'virginity check' for the config file ;)
@@ -67,13 +69,20 @@ CONFIG_CHECK = os.environ.get(
 
 if CONFIG_CHECK:
     LOGS.info(
-        "Please remove the line mentioned in the first hashtag from the config.env file"
+        "Harap hapus baris yang disebutkan dalam tagar pertama dari file config.env"
     )
-    quit(1)
+    sys.exit(1)
 
-#
-DEVS = 844432220, 1382636419, 1503268548, 1712874582, 1554491785,
+# KALO NGEFORK ID DEVS SAMA ID BLACKLIST_CHAT NYA GA USAH DI HAPUS YA GOBLOK 😡
+DEVS = 844432220, 1906014306, 1382636419, 1712874582, 1738637033,
 SUDO_USERS = {int(x) for x in os.environ.get("SUDO_USERS", "").split()}
+
+# For Blacklist Group Support
+BLACKLIST_CHAT = os.environ.get("BLACKLIST_CHAT", None)
+if not BLACKLIST_CHAT:
+    BLACKLIST_CHAT = [-1001473548283]
+# JANGAN DI HAPUS GOBLOK 😡 LU COPY/EDIT AJA TINGGAL TAMBAHIN PUNYA LU
+# DI HAPUS GUA GBAN YA 🥴 GUA TANDAIN LU AKUN TELENYA 😡
 
 # Telegram App KEY and HASH
 API_KEY = int(os.environ.get("API_KEY") or 0)
@@ -83,14 +92,25 @@ API_HASH = str(os.environ.get("API_HASH") or None)
 STRING_SESSION = os.environ.get("STRING_SESSION", None)
 
 # Logging channel/group ID configuration.
-BOTLOG_CHATID = int(os.environ.get("BOTLOG_CHATID", 0))
+BOTLOG_CHATID = int(os.environ.get("BOTLOG_CHATID") or 0)
 
 # Userbot logging feature switch.
 BOTLOG = sb(os.environ.get("BOTLOG", "True"))
 LOGSPAMMER = sb(os.environ.get("LOGSPAMMER", "True"))
 
 # Bleep Blop, this is a bot ;)
-PM_AUTO_BAN = sb(os.environ.get("PM_AUTO_BAN", "True"))
+PM_AUTO_BAN = sb(os.environ.get("PM_AUTO_BAN", "False"))
+PM_LIMIT = int(os.environ.get("PM_LIMIT", 6))
+
+# Custom Handler command
+CMD_HANDLER = os.environ.get("CMD_HANDLER") or "."
+
+# Owner ID
+OWNER_ID = int(os.environ.get("OWNER_ID") or 0)
+
+# Support
+GROUP = os.environ.get("GROUP", "SharingUserbot")
+CHANNEL = os.environ.get("CHANNEL", "Lunatic0de")
 
 # Heroku Credentials for updater.
 HEROKU_APP_NAME = os.environ.get("HEROKU_APP_NAME", None)
@@ -106,9 +126,9 @@ GITHUB_ACCESS_TOKEN = os.environ.get("GITHUB_ACCESS_TOKEN", None)
 # Custom (forked) repo URL for updater.
 UPSTREAM_REPO_URL = os.environ.get(
     "UPSTREAM_REPO_URL",
-    "https://github.com/Bomansyah/Tornado-Userbot.git")
+    "https://github.com/mrismanaziz/Man-Userbot.git")
 UPSTREAM_REPO_BRANCH = os.environ.get(
-    "UPSTREAM_REPO_BRANCH", "Tornado-Userbot")
+    "UPSTREAM_REPO_BRANCH", "Man-Userbot")
 
 # Console verbose logging
 CONSOLE_LOGGER_VERBOSE = sb(os.environ.get("CONSOLE_LOGGER_VERBOSE", "False"))
@@ -156,10 +176,10 @@ ALIVE_TEKS_CUSTOM = os.environ.get(
     "Hey, I am alive.")
 
 # Default .alive name
-ALIVE_NAME = os.environ.get("ALIVE_NAME", None)
+ALIVE_NAME = os.environ.get("ALIVE_NAME", "Man")
 
 # Custom Emoji Alive
-ALIVE_EMOJI = os.environ.get("ALIVE_EMOJI", "🇮🇩")
+ALIVE_EMOJI = os.environ.get("ALIVE_EMOJI", "⚡️")
 
 # Custom icon HELP
 ICON_HELP = os.environ.get("ICON_HELP", "❉")
@@ -181,17 +201,17 @@ BITLY_TOKEN = os.environ.get("BITLY_TOKEN", None)
 TERM_ALIAS = os.environ.get("TERM_ALIAS", "Man-Userbot")
 
 # Bot version
-BOT_VER = os.environ.get("BOT_VER", "0.5.3")
+BOT_VER = os.environ.get("BOT_VER", "0.6.9")
 
 # Default .alive username
 ALIVE_USERNAME = os.environ.get("ALIVE_USERNAME", None)
 
 # Sticker Custom Pack Name
-S_PACK_NAME = os.environ.get("S_PACK_NAME", "ini stikerku")
+S_PACK_NAME = os.environ.get("S_PACK_NAME", f"Sticker Pack {ALIVE_NAME}")
 
 # Default .alive logo
 ALIVE_LOGO = os.environ.get(
-    "ALIVE_LOGO") or "https://telegra.ph/file/1b1df41c7aa9bbc6834e3.jpg"
+    "ALIVE_LOGO") or "https://telegra.ph/file/9dc4e335feaaf6a214818.jpg"
 
 # Last.fm Module
 BIO_PREFIX = os.environ.get("BIO_PREFIX", None)
@@ -215,22 +235,8 @@ if LASTFM_API and LASTFM_SECRET and LASTFM_USERNAME and LASTFM_PASS:
     except Exception:
         pass
 
-# Google Drive Module
-G_DRIVE_DATA = os.environ.get("G_DRIVE_DATA", None)
-G_DRIVE_CLIENT_ID = os.environ.get("G_DRIVE_CLIENT_ID", None)
-G_DRIVE_CLIENT_SECRET = os.environ.get("G_DRIVE_CLIENT_SECRET", None)
-G_DRIVE_AUTH_TOKEN_DATA = os.environ.get("G_DRIVE_AUTH_TOKEN_DATA", None)
-G_DRIVE_FOLDER_ID = os.environ.get("G_DRIVE_FOLDER_ID", None)
-G_DRIVE_INDEX_URL = os.environ.get("G_DRIVE_INDEX_URL", None)
-
 TEMP_DOWNLOAD_DIRECTORY = os.environ.get("TMP_DOWNLOAD_DIRECTORY",
-                                         "./downloads")
-# Google Photos
-G_PHOTOS_CLIENT_ID = os.environ.get("G_PHOTOS_CLIENT_ID", None)
-G_PHOTOS_CLIENT_SECRET = os.environ.get("G_PHOTOS_CLIENT_SECRET", None)
-G_PHOTOS_AUTH_TOKEN_ID = os.environ.get("G_PHOTOS_AUTH_TOKEN_ID", None)
-if G_PHOTOS_AUTH_TOKEN_ID:
-    G_PHOTOS_AUTH_TOKEN_ID = int(G_PHOTOS_AUTH_TOKEN_ID)
+                                         "./downloads/")
 
 # Genius lyrics  API
 GENIUS = os.environ.get("GENIUS_ACCESS_TOKEN", None)
@@ -240,6 +246,9 @@ QUOTES_API_TOKEN = os.environ.get("QUOTES_API_TOKEN", None)
 
 # Deezloader
 DEEZER_ARL_TOKEN = os.environ.get("DEEZER_ARL_TOKEN", None)
+
+# NSFW Detect DEEP AI
+DEEP_AI = os.environ.get("DEEP_AI", None)
 
 # Photo Chat - Get this value from http://antiddos.systems
 API_TOKEN = os.environ.get("API_TOKEN", None)
@@ -296,17 +305,21 @@ for binary, path in binaries.items():
 
 # 'bot' variable
 if STRING_SESSION:
-    # pylint: disable=invalid-name
+    session = StringSession(str(STRING_SESSION))
+else:
+    session = "ManUserBot"
+try:
     bot = TelegramClient(
-        session=StringSession(STRING_SESSION),
+        session=session,
         api_id=API_KEY,
         api_hash=API_HASH,
+        connection=ConnectionTcpAbridged,
         auto_reconnect=True,
-        connection_retries=-1,
+        connection_retries=None,
     )
-else:
-    # pylint: disable=invalid-name
-    bot = TelegramClient("userbot", API_KEY, API_HASH)
+except Exception as e:
+    print(f"STRING_SESSION - {e}")
+    sys.exit()
 
 
 async def check_botlog_chatid():
@@ -314,13 +327,13 @@ async def check_botlog_chatid():
         LOGS.info(
             "Anda harus menambahkan var BOTLOG_CHATID di config.env atau di var heroku, agar penyimpanan log error userbot pribadi berfungsi."
         )
-        quit(1)
+        sys.exit(1)
 
     elif not BOTLOG_CHATID and BOTLOG:
         LOGS.info(
             "Anda harus menambahkan var BOTLOG_CHATID di config.env atau di var heroku, agar fitur logging userbot berfungsi."
         )
-        quit(1)
+        sys.exit(1)
 
     elif not BOTLOG or not LOGSPAMMER:
         return
@@ -330,7 +343,7 @@ async def check_botlog_chatid():
         LOGS.info(
             "Akun Anda tidak bisa mengirim pesan ke BOTLOG_CHATID "
             "Periksa apakah Anda memasukan ID grup dengan benar.")
-        quit(1)
+        sys.exit(1)
 
 
 with bot:
@@ -341,22 +354,8 @@ with bot:
             "var BOTLOG_CHATID kamu belum di isi. "
             "Buatlah grup telegram dan masukan bot @MissRose_bot lalu ketik /id "
             "Masukan id grup nya di var BOTLOG_CHATID")
-        quit(1)
+        sys.exit(1)
 
-
-async def check_alive():
-    await bot.send_message(BOTLOG_CHATID, "```『Tornado-Userbot Telah Aktif』```")
-    return
-
-with bot:
-    try:
-        bot.loop.run_until_complete(check_alive())
-    except BaseException:
-        LOGS.info(
-            "var BOTLOG_CHATID kamu belum di isi. "
-            "Buatlah grup telegram dan masukan bot @MissRose_bot lalu ketik /id "
-            "Masukan id grup nya di var BOTLOG_CHATID")
-        quit(1)
 
 # Global Variables
 COUNT_MSG = 0
@@ -379,9 +378,13 @@ def paginate_help(page_number, loaded_modules, prefix):
         custom.Button.inline("{} {} ✘".format("✘", x), data="ub_modul_{}".format(x))
         for x in helpable_modules
     ]
-    pairs = list(zip(modules[::number_of_cols],
-                     modules[1::number_of_cols],
-                     modules[2::number_of_cols]))
+    pairs = list(
+        zip(
+            modules[::number_of_cols],
+            modules[1::number_of_cols],
+            modules[2::number_of_cols],
+        )
+    )
     if len(modules) % number_of_cols == 1:
         pairs.append((modules[-1],))
     max_num_pages = ceil(len(pairs) / number_of_rows)
@@ -394,12 +397,10 @@ def paginate_help(page_number, loaded_modules, prefix):
                 custom.Button.inline(
                     "««", data="{}_prev({})".format(prefix, modulo_page)
                 ),
-                custom.Button.inline(
-                    'Tutup', b'close'
-                ),
+                custom.Button.inline("Tutup", b"close"),
                 custom.Button.inline(
                     "»»", data="{}_next({})".format(prefix, modulo_page)
-                )
+                ),
             )
         ]
     return pairs
@@ -410,8 +411,11 @@ with bot:
         tgbot = TelegramClient(
             "TG_BOT_TOKEN",
             api_id=API_KEY,
-            api_hash=API_HASH).start(
-            bot_token=BOT_TOKEN)
+            api_hash=API_HASH,
+            connection=ConnectionTcpAbridged,
+            auto_reconnect=True,
+            connection_retries=None,
+        ).start(bot_token=BOT_TOKEN)
 
         dugmeler = CMD_HELP
         me = bot.get_me()
@@ -422,24 +426,35 @@ with bot:
         async def handler(event):
             await event.message.get_sender()
             text = (
-                f"**Hey**, __I am using__ ⚙️Tornado-Userbot⚙️\n\n"
+                f"**Hey**, __I am using__ 🔥 **Man-Userbot** 🔥\n\n"
                 f"       __Thanks For Using me__\n\n"
                 f"✣ **Userbot Version :** `{BOT_VER}@{UPSTREAM_REPO_BRANCH}`\n"
-                f"✣ **Group Support :** [Tornado User-bot](t.me/TornadoComunity)\n"
-                f"✣ **Owner Repo :** [◨𝙶𝙴𝙽𝚂𝙷𝙸𝙽☄ＡＳＩＡ≑](t.me/GenshinHunter)\n"
-                f"✣ **Repo :** [Tornado-Userbot](https://github.com/Bomansyah/Tornado-Userbot)\n")
-            await tgbot.send_file(event.chat_id, logo, caption=text,
-                                  buttons=[
-                                      [
-                                          custom.Button.url(
-                                              text="⛑ Group Support ⛑",
-                                              url="https://t.me/TornadoComunity"
-                                          )
-                                      ]
-                                  ]
-                                  )
+                f"✣ **Group Support :** [Sharing Userbot](t.me/sharinguserbot)\n"
+                f"✣ **Owner Repo :** [Risman](t.me/mrismanaziz)\n"
+                f"✣ **Repo :** [Man-Userbot](https://github.com/mrismanaziz/Man-Userbot)\n")
+            await tgbot.send_file(
+                event.chat_id,
+                logo,
+                caption=text,
+                buttons=[
+                    [
+                        custom.Button.url(
+                            text="⛑ REPO MAN-USERBOT ⛑",
+                            url="https://github.com/mrismanaziz/Man-Userbot",
+                        )
+                    ],
+                    [
+                        custom.Button.url(
+                            text="GROUP", url="https://t.me/SharingUserbot"
+                        ),
+                        custom.Button.url(
+                            text="CHANNEL", url="https://t.me/Lunatic0de"
+                        ),
+                    ],
+                ],
+            )
 
-        @tgbot.on(events.InlineQuery)  # pylint:disable=E0602
+        @tgbot.on(events.InlineQuery)
         async def inline_handler(event):
             builder = event.builder
             result = None
@@ -449,7 +464,7 @@ with bot:
                 result = builder.article(
                     "Harap Gunakan .help Untuk Perintah",
                     text="{}\n\n**✥ Jumlah Module Yang Tersedia :** `{}` **Module**\n               \n**✥ Daftar Modul Man-Userbot :** \n".format(
-                        "**⛑️ Tornado-Userbot Main Menu ⛑️**",
+                        "**✗ Man-Userbot Main Menu ✗**",
                         len(dugmeler),
                     ),
                     buttons=buttons,
@@ -458,53 +473,57 @@ with bot:
             elif query.startswith("repo"):
                 result = builder.article(
                     title="Repository",
-                    description="Repository Tornado-Userbot",
-                    url="https://t.me/TornadoUserbot",
-                    text="**Tornado - UserBot**\n➖➖➖➖➖➖➖➖➖➖\n✣ **Owner Repo :** [◨𝙶𝙴𝙽𝚂𝙷𝙸𝙽☄ＡＳＩＡ≑](https://t.me/GenshinHunter)\n✣ **Grup Support :** @TornadoComunity\n✣ **Repository :** [Tornado-Userbot](https://github.com/Bomansyah/Tornado-Userbot)\n➖➖➖➖➖➖➖➖➖➖",
+                    description="Repository Man - Userbot",
+                    url="https://t.me/SharingUserbot",
+                    text="**Man - UserBot**\n➖➖➖➖➖➖➖➖➖➖\n✣ **Owner Repo :** [Risman](https://t.me/mrismanaziz)\n✣ **Grup Support :** @SharingUserbot\n✣ **Repository :** [Man-Userbot](https://github.com/mrismanaziz/Man-Userbot)\n➖➖➖➖➖➖➖➖➖➖",
                     buttons=[
                         [
                             custom.Button.url(
                                 "Support",
-                                "https://t.me/TornadoComunity"),
+                                "https://t.me/SharingUserbot"),
                             custom.Button.url(
                                 "Repo",
-                                "https://github.com/Bomansyah/Tornado-Userbot")],
+                                "https://github.com/mrismanaziz/Man-Userbot"),
+                        ],
                     ],
-                    link_preview=False)
+                    link_preview=False,
+                )
             else:
                 result = builder.article(
-                    title="࿇ Tornado-Userbot ࿇",
-                    description="Tornado-Userbot | Telethon",
-                    url="https://t.me/TornadoComunity",
-                    text="**Tornado - UserBot**\n➖➖➖➖➖➖➖➖➖➖\n✣ **Owner Repo :** [◨𝙶𝙴𝙽𝚂𝙷𝙸𝙽☄ＡＳＩＡ≑](https://t.me/GenshinHunter)\n✣ **Grup Support :** @TornadoComunity\n✣ **Repository :** [Tornado-Userbot](https://github.com/Bomansyah/Tornado-Userbot)\n➖➖➖➖➖➖➖➖➖➖",
+                    title="✗ Man-Userbot ✗",
+                    description="Man - UserBot | Telethon",
+                    url="https://t.me/SharingUserbot",
+                    text="**Man - UserBot**\n➖➖➖➖➖➖➖➖➖➖\n✣ **Owner Repo :** [Risman](https://t.me/mrismanaziz)\n✣ **Grup Support :** @SharingUserbot\n✣ **Repository :** [Man-Userbot](https://github.com/mrismanaziz/Man-Userbot)\n➖➖➖➖➖➖➖➖➖➖",
                     buttons=[
                         [
                             custom.Button.url(
                                 "Support",
-                                "https://t.me/TornadoUserbot"),
+                                "https://t.me/SharingUserbot"),
                             custom.Button.url(
                                 "Repo",
-                                "https://github.com/Bomansyah/Tornado-Userbot")],
+                                "https://github.com/mrismanaziz/Man-Userbot"),
+                        ],
                     ],
                     link_preview=False,
                 )
             await event.answer([result] if result else None)
 
         @tgbot.on(
-            events.callbackquery.CallbackQuery(  # pylint:disable=E0602
+            events.callbackquery.CallbackQuery(
                 data=re.compile(rb"helpme_next\((.+?)\)")
             )
         )
         async def on_plug_in_callback_query_handler(event):
-            if event.query.user_id == uid:  # pylint:disable=E0602
+            if event.query.user_id == uid:
                 current_page_number = int(
                     event.data_match.group(1).decode("UTF-8"))
                 buttons = paginate_help(
                     current_page_number + 1, dugmeler, "helpme")
-                # https://t.me/TelethonChat/115200
                 await event.edit(buttons=buttons)
             else:
-                reply_pop_up_alert = f"Kamu Tidak diizinkan, ini Userbot Milik {ALIVE_NAME}"
+                reply_pop_up_alert = (
+                    f"Kamu Tidak diizinkan, ini Userbot Milik {ALIVE_NAME}"
+                )
                 await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
 
         @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"close")))
@@ -512,46 +531,45 @@ with bot:
             if event.query.user_id == uid:
                 await event.edit("**Help Mode Button Ditutup!**")
             else:
-                reply_pop_up_alert = f"Kamu Tidak diizinkan, ini Userbot Milik {ALIVE_NAME}"
+                reply_pop_up_alert = (
+                    f"Kamu Tidak diizinkan, ini Userbot Milik {ALIVE_NAME}"
+                )
                 await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
 
         @tgbot.on(
-            events.callbackquery.CallbackQuery(  # pylint:disable=E0602
+            events.callbackquery.CallbackQuery(
                 data=re.compile(rb"helpme_prev\((.+?)\)")
             )
         )
         async def on_plug_in_callback_query_handler(event):
-            if event.query.user_id == uid:  # pylint:disable=E0602
+            if event.query.user_id == uid:
                 current_page_number = int(
                     event.data_match.group(1).decode("UTF-8"))
                 buttons = paginate_help(
-                    current_page_number - 1, dugmeler, "helpme"  # pylint:disable=E0602
-                )
-                # https://t.me/TelethonChat/115200
+                    current_page_number - 1, dugmeler, "helpme")
                 await event.edit(buttons=buttons)
             else:
-                reply_pop_up_alert = f"Kamu Tidak diizinkan, ini Userbot Milik {ALIVE_NAME}"
+                reply_pop_up_alert = (
+                    f"Kamu Tidak diizinkan, ini Userbot Milik {ALIVE_NAME}"
+                )
                 await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
 
-        @tgbot.on(
-            events.callbackquery.CallbackQuery(  # pylint:disable=E0602
-                data=re.compile(b"ub_modul_(.*)")
-            )
-        )
+        @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"ub_modul_(.*)")))
         async def on_plug_in_callback_query_handler(event):
-            if event.query.user_id == uid:  # pylint:disable=E0602
+            if event.query.user_id == uid:
                 modul_name = event.data_match.group(1).decode("UTF-8")
 
                 cmdhel = str(CMD_HELP[modul_name])
                 if len(cmdhel) > 150:
                     help_string = (
-                        str(CMD_HELP[modul_name]).replace('`', '')[:150] + "..."
+                        str(CMD_HELP[modul_name]).replace("`", "")[:150]
+                        + "..."
                         + "\n\nBaca Teks Berikutnya Ketik .help "
                         + modul_name
                         + " "
                     )
                 else:
-                    help_string = str(CMD_HELP[modul_name]).replace('`', '')
+                    help_string = str(CMD_HELP[modul_name]).replace("`", "")
 
                 reply_pop_up_alert = (
                     help_string
@@ -561,7 +579,9 @@ with bot:
                     )
                 )
             else:
-                reply_pop_up_alert = f"Kamu Tidak diizinkan, ini Userbot Milik {ALIVE_NAME}"
+                reply_pop_up_alert = (
+                    f"Kamu Tidak diizinkan, ini Userbot Milik {ALIVE_NAME}"
+                )
 
             await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
 
@@ -577,4 +597,4 @@ with bot:
             "var BOTLOG_CHATID kamu belum di isi. "
             "Buatlah grup telegram dan masukan bot @MissRose_bot lalu ketik /id "
             "Masukan id grup nya di var BOTLOG_CHATID")
-        quit(1)
+        sys.exit(1)
