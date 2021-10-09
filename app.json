@@ -17,7 +17,7 @@
       "required": true
     },
      "STRING_SESSION": {
-      "description": "Dapatkan String Session di Grup » https://t.me/TornadoUserbot » Lalu ketik #string",
+      "description": "Dapatkan String Session di Grup » https://t.me/sharinguserbot » Lalu ketik #string",
       "required": true
     },
     "HEROKU_APP_NAME": {
@@ -29,13 +29,13 @@
       "required": true
     },
     "BOTLOG_CHATID": {
-      "description": "Buatlah sebuah grup public dan masukan bot @MissRose_bot lalu ketik /id ,masukan id grup nya disini",
+      "description": "Buatlah sebuah grup dan masukan bot @MissRose_bot lalu ketik /id, masukan id grup nya disini. ex: '-123456'",
       "value": "Isi id grup mu wajib dengan awalan -100",
       "required": true
     },
     "PM_AUTO_BAN": {
       "description": "PM Auto-Ban adalah module untuk bot welcome otomatis ketika ada orang ngePC kamu,jika Mau di aktifkan ubah ke True",
-      "value": "true",
+      "value": "False",
       "required": false
     },
     "ALIVE_NAME": {
@@ -44,7 +44,7 @@
     },
     "ALIVE_LOGO": {
       "description": "Gambar dalam module .alive",
-      "value": "https://telegra.ph/file/1b1df41c7aa9bbc6834e3.jpg",
+      "value": "https://telegra.ph/file/9dc4e335feaaf6a214818.jpg",
       "required": false
     },
     "ALIVE_TEKS_CUSTOM": {
@@ -63,26 +63,21 @@
   },
   "addons": [
     {
-      "plan": "heroku-postgresql",
+    "plan": "heroku-postgresql",
       "options": {
         "version": "12"
       }
     }
-  ],"buildpacks": [{
-    "url": "https://github.com/heroku/heroku-buildpack-python.git"
-  }, {
-    "url": "https://github.com/heroku/heroku-buildpack-redis"
-  }, {
-    "url": "https://github.com/heroku/heroku-buildpack-google-chrome"
-  }, {
-    "url": "https://github.com/HasibulKabir/heroku-buildpack-rarlab"
-  },{
-    "url": "https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest"
-  }, {
-    "url": "https://github.com/opendoor-labs/heroku-buildpack-p7zip"
-  }, {
-    "url": "https://github.com/amivin/aria2-heroku"
-  }, {
-    "url": "https://github.com/stevo550/buildpack-slug-cleaner"
-  }]
+  ],
+  "buildpacks": [
+    {
+      "url": "heroku/python"
+    }
+  ],
+  "formation": {
+    "worker": {
+      "quantity": 1,
+      "size": "free"
+    }
+  }
 }
