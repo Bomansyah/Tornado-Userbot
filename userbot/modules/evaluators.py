@@ -64,7 +64,7 @@ async def evaluate(event):
             event.chat_id,
             "output.txt",
             reply_to=event.id,
-            caption="`Output terlalu besar, dikirim sebagai file...`",
+            caption="**Output terlalu besar, dikirim sebagai file**",
         )
         return remove("output.txt")
     await event.edit(f"**Query:**\n`{expression}`\n\n**Result:**\n`{evaluation}`")
@@ -113,7 +113,7 @@ async def run(event):
             event.chat_id,
             "output.txt",
             reply_to=event.id,
-            caption="`Output terlalu besar, dikirim sebagai file...`",
+            caption="**Output terlalu besar, dikirim sebagai file**",
         )
         return remove("output.txt")
     await event.edit(f"**Query:**\n`{codepre}`\n\n**Result:**\n`{stdout}`")
@@ -150,14 +150,14 @@ async def terminal_runner(event):
             event.chat_id,
             "output.txt",
             reply_to=event.id,
-            caption="`Output terlalu besar, dikirim sebagai file...`",
+            caption="**Output terlalu besar, dikirim sebagai file**",
         )
         return remove("output.txt")
 
     await event.edit(f"**Command:**\n`{command}`\n\n**Result:**\n`{result}`")
 
 
-@register(outgoing=True, pattern="^.json$")
+@register(outgoing=True, pattern=r"^\.json$")
 async def _(event):
     if event.fwd_from:
         return
