@@ -1,12 +1,12 @@
 # We're using Ubuntu 20.10
-FROM biansepang/weebproject:buster
+FROM mrismanaziz/man-userbot:buster
 
 RUN git clone -b Tornado-Userbot https://github.com/Bomansyah/Tornado-Userbot /root/userbot
-RUN mkdir /root/userbot/.bin
-RUN pip install --upgrade pip setuptools
-WORKDIR /root/userbot
+&& chmod 777 /home/manuserbot \
+    && mkdir /home/manuserbot/bin/
 
-#Install python requirements
-RUN pip3 install -r https://raw.githubusercontent.com/tofikdn/Man-Userbot/Man-Userbot/requirements.txt
+COPY ./sample_config.env ./config.env* /home/manuserbot/
 
-CMD ["python3.9", "-m", "userbot"]
+WORKDIR /home/manuserbot/
+
+CMD ["python3", "-m", "userbot"]
