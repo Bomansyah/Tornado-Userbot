@@ -94,7 +94,6 @@ async def permitpm(event):
             if COUNT_PM[event.chat_id] > PM_LIMIT:
                 await event.respond(
                     "**Maaf Anda Telah Di Blokir Karna Melakukan Spam Chat**"
-              await message.delete(5)
                 )
 
                 try:
