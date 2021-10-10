@@ -109,8 +109,8 @@ CMD_HANDLER = os.environ.get("CMD_HANDLER") or "."
 OWNER_ID = int(os.environ.get("OWNER_ID") or 0)
 
 # Support
-GROUP = os.environ.get("GROUP", "SharingUserbot")
-CHANNEL = os.environ.get("CHANNEL", "Lunatic0de")
+GROUP = os.environ.get("GROUP", "TornadoComunity ")
+CHANNEL = os.environ.get("CHANNEL", "TornadoComunity")
 
 # Heroku Credentials for updater.
 HEROKU_APP_NAME = os.environ.get("HEROKU_APP_NAME", None)
@@ -176,13 +176,13 @@ ALIVE_TEKS_CUSTOM = os.environ.get(
     "Hey, I am alive.")
 
 # Default .alive name
-ALIVE_NAME = os.environ.get("ALIVE_NAME", "Man")
+ALIVE_NAME = os.environ.get("ALIVE_NAME", "𝙶𝚎𝚗")
 
 # Custom Emoji Alive
-ALIVE_EMOJI = os.environ.get("ALIVE_EMOJI", "⚡️")
+ALIVE_EMOJI = os.environ.get("ALIVE_EMOJI", "〠")
 
 # Custom icon HELP
-ICON_HELP = os.environ.get("ICON_HELP", "❉")
+ICON_HELP = os.environ.get("ICON_HELP", "֎")
 
 # Time & Date - Country and Time Zone
 COUNTRY = str(os.environ.get("COUNTRY", "ID"))
@@ -307,7 +307,7 @@ for binary, path in binaries.items():
 if STRING_SESSION:
     session = StringSession(str(STRING_SESSION))
 else:
-    session = "ManUserBot"
+    session = "TornadoUserBot"
 try:
     bot = TelegramClient(
         session=session,
@@ -426,12 +426,12 @@ with bot:
         async def handler(event):
             await event.message.get_sender()
             text = (
-                f"**Hey**, __I am using__ 🔥 **Man-Userbot** 🔥\n\n"
+                f"**Hey**, __I am using__ 🇮🇩 **Tornado-Userbot** 🇮🇩\n\n"
                 f"       __Thanks For Using me__\n\n"
                 f"✣ **Userbot Version :** `{BOT_VER}@{UPSTREAM_REPO_BRANCH}`\n"
-                f"✣ **Group Support :** [Sharing Userbot](t.me/sharinguserbot)\n"
-                f"✣ **Owner Repo :** [Risman](t.me/mrismanaziz)\n"
-                f"✣ **Repo :** [Man-Userbot](https://github.com/mrismanaziz/Man-Userbot)\n")
+                f"✣ **Group Support :** [Tornado Userbot](t.me/TornadoComunity)\n"
+                f"✣ **Owner Repo :** [◨𝙶𝙴𝙽𝚂𝙷𝙸𝙽☄ＡＳＩＡ≑](t.me/GenshinHunter)\n"
+                f"✣ **Repo :** [Tornado-Userbot](https://github.com/Bomansyah/Tornado-Userbot)\n")
             await tgbot.send_file(
                 event.chat_id,
                 logo,
@@ -439,16 +439,16 @@ with bot:
                 buttons=[
                     [
                         custom.Button.url(
-                            text="⛑ REPO MAN-USERBOT ⛑",
+                            text="🇮🇩 REPO TORNADO-USERBOT 🇮🇩",
                             url="https://github.com/mrismanaziz/Man-Userbot",
                         )
                     ],
                     [
                         custom.Button.url(
-                            text="GROUP", url="https://t.me/SharingUserbot"
+                            text="GROUP", url="https://t.me/TornadoComunity"
                         ),
                         custom.Button.url(
-                            text="CHANNEL", url="https://t.me/Lunatic0de"
+                            text="CHANNEL", url="https://t.me/TornadoComunity"
                         ),
                     ],
                 ],
@@ -464,7 +464,7 @@ with bot:
                 result = builder.article(
                     "Harap Gunakan .help Untuk Perintah",
                     text="{}\n\n**✥ Jumlah Module Yang Tersedia :** `{}` **Module**\n               \n**✥ Daftar Modul Man-Userbot :** \n".format(
-                        "**✗ Man-Userbot Main Menu ✗**",
+                        "**🇮🇩 Tornado-Userbot Main Menu 🇮🇩**",
                         len(dugmeler),
                     ),
                     buttons=buttons,
@@ -473,35 +473,35 @@ with bot:
             elif query.startswith("repo"):
                 result = builder.article(
                     title="Repository",
-                    description="Repository Man - Userbot",
-                    url="https://t.me/SharingUserbot",
-                    text="**Man - UserBot**\n➖➖➖➖➖➖➖➖➖➖\n✣ **Owner Repo :** [Risman](https://t.me/mrismanaziz)\n✣ **Grup Support :** @SharingUserbot\n✣ **Repository :** [Man-Userbot](https://github.com/mrismanaziz/Man-Userbot)\n➖➖➖➖➖➖➖➖➖➖",
+                    description="Repository Tornado - Userbot",
+                    url="https://t.me/TornadoComunity",
+                    text="**Tornado - UserBot**\n➖➖➖➖➖➖➖➖➖➖\n✣ **Owner Repo :** [◨𝙶𝙴𝙽𝚂𝙷𝙸𝙽☄ＡＳＩＡ≑](https://t.me/GenshinHunter)\n✣ **Grup Support :** @TornadoComunity\n✣ **Repository :** [Tornado-Userbot](https://github.com/Bomansyah/Tornado-Userbot)\n➖➖➖➖➖➖➖➖➖➖",
                     buttons=[
                         [
                             custom.Button.url(
                                 "Support",
-                                "https://t.me/SharingUserbot"),
+                                "https://t.me/TornadoComunity"),
                             custom.Button.url(
                                 "Repo",
-                                "https://github.com/mrismanaziz/Man-Userbot"),
+                                "https://github.com/Bomansyah/Tornado-Userbot"),
                         ],
                     ],
                     link_preview=False,
                 )
             else:
                 result = builder.article(
-                    title="✗ Man-Userbot ✗",
-                    description="Man - UserBot | Telethon",
-                    url="https://t.me/SharingUserbot",
-                    text="**Man - UserBot**\n➖➖➖➖➖➖➖➖➖➖\n✣ **Owner Repo :** [Risman](https://t.me/mrismanaziz)\n✣ **Grup Support :** @SharingUserbot\n✣ **Repository :** [Man-Userbot](https://github.com/mrismanaziz/Man-Userbot)\n➖➖➖➖➖➖➖➖➖➖",
+                    title="『Tornado-Userbot Telah Aktif』",
+                    description="Tornado - UserBot | Telethon",
+                    url="https://t.me/TornadoComunity",
+                    text="**Tornado - UserBot**\n➖➖➖➖➖➖➖➖➖➖\n✣ **Owner Repo :** [◨𝙶𝙴𝙽𝚂𝙷𝙸𝙽☄ＡＳＩＡ≑](https://t.me/GenshinHunter)\n✣ **Grup Support :** @TornadoComunity\n✣ **Repository :** [Tornado-Userbot](https://github.com/Bomansyah/Tornado-Userbot)\n➖➖➖➖➖➖➖➖➖➖",
                     buttons=[
                         [
                             custom.Button.url(
                                 "Support",
-                                "https://t.me/SharingUserbot"),
+                                "https://t.me/TornadoComunity"),
                             custom.Button.url(
                                 "Repo",
-                                "https://github.com/mrismanaziz/Man-Userbot"),
+                                "https://github.com/Bomansyah/Tornado-Userbot"),
                         ],
                     ],
                     link_preview=False,
