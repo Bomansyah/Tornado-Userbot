@@ -252,7 +252,7 @@ async def approvepm(apprvpm):
     except IntegrityError:
         return await apprvpm.edit("**Pesan Anda Sudah Diterima**")
 
-    await apprvpm.edit(f"**𝙾𝚔** [{name0}](tg://user?id={uid}) **𝙿𝚎𝚜𝚊𝚗 𝙰𝚗𝚍𝚊 𝚂𝚞𝚍𝚊𝚑 𝙳𝚒𝚝𝚎𝚛𝚒𝚖𝚊**"
+    await apprvpm.edit(f"**Menerima Pesan Dari** [{name0}](tg://user?id={uid})")
 
     if BOTLOG:
         await apprvpm.client.send_message(
@@ -308,7 +308,7 @@ async def disapprovepm(disapprvpm):
         aname = aname.id
 
     await disapprvpm.edit(
-        f" **𝙼𝚊𝚊𝚏** [{name0}](tg://user?id={aname}) **𝙿𝚎𝚜𝚊𝚗 𝙰𝚗𝚍𝚊 𝚂𝚞𝚍𝚊𝚑 𝙳𝚒𝚝𝚘𝚕𝚊𝚔, 𝙼𝚘𝚑𝚘𝚗 𝙹𝚊𝚗𝚐𝚊𝚗 𝙼𝚎𝚕𝚊𝚔𝚞𝚔𝚊𝚗 𝚂𝚙𝚊𝚖 𝙳𝚒 𝚁𝚘𝚘𝚖 𝙲𝚑𝚊𝚝!**"
+        f" **Maaf Pesan** [{name0}](tg://user?id={aname}) **Telah Ditolak, Mohon Jangan Melakukan Spam Ke Room Chat!**"
     )
 
     if BOTLOG:
