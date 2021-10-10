@@ -252,7 +252,7 @@ async def approvepm(apprvpm):
     except IntegrityError:
         return await apprvpm.edit("**Pesan Anda Sudah Diterima**")
 
-    await apprvpm.edit(f"**Menerima Pesan Dari** [{name0}](tg://user?id={uid})")
+    await apprvpm.edit(f"**𝙾𝚔** [{name0}](tg://user?id={uid})**𝙿𝚎𝚜𝚊𝚗 𝙰𝚗𝚍𝚊 𝚂𝚞𝚍𝚊𝚑 𝙳𝚒𝚝𝚎𝚛𝚒𝚊**")
 
     if BOTLOG:
         await apprvpm.client.send_message(
