@@ -3,8 +3,9 @@
 # Licensed under the Raphielscape Public License, Version 1.d (the "License");
 # you may not use this file except in compliance with the License.
 #
-# inline credit @GenshinHunter
-# t.me/TornadoComunity
+# inline credit @keselekpermen69
+# Recode by @mrismanaziz
+# t.me/SharingUserbot
 #
 """ Userbot initialization. """
 
@@ -21,10 +22,9 @@ from math import ceil
 from pathlib import Path
 from pylast import LastFMNetwork, md5
 from pySmartDL import SmartDL
-from pymongo import MongoClient
-from redis import StrictRedis
 from dotenv import load_dotenv
 from requests import get
+from telethon.tl.types import InputWebDocument
 from telethon.sync import TelegramClient, custom, events
 from telethon.network.connection.tcpabridged import ConnectionTcpAbridged
 from telethon.sessions import StringSession
@@ -35,14 +35,22 @@ STORAGE = (lambda n: Storage(Path("data") / n))
 
 load_dotenv("config.env")
 
-
 StartTime = time.time()
 
-CMD_LIST = {}
-# for later purposes
+# Global Variables
+COUNT_MSG = 0
+USERS = {}
+COUNT_PM = {}
+LASTMSG = {}
 CMD_HELP = {}
-INT_PLUG = ""
+CMD_LIST = {}
+SUDO_LIST = {}
+ZALG_LIST = {}
 LOAD_PLUG = {}
+INT_PLUG = ""
+ISAFK = False
+AFKREASON = None
+ENABLE_KILLME = True
 
 # Bot Logs setup:
 CONSOLE_LOGGER_VERBOSE = sb(os.environ.get("CONSOLE_LOGGER_VERBOSE", "False"))
@@ -74,8 +82,8 @@ if CONFIG_CHECK:
     sys.exit(1)
 
 # KALO NGEFORK ID DEVS SAMA ID BLACKLIST_CHAT NYA GA USAH DI HAPUS YA GOBLOK 😡
-DEVS = 844432220, 2017836363, 1906014306, 1382636419, 1712874582, 1738637033,
-SUDO_USERS = {int(x) for x in os.environ.get("SUDO_USERS", "").split()}
+DEVS = 844432220, 1906014306, 1382636419, 1712874582, 1738637033,
+SUDO_USERS = set(int(x) for x in os.environ.get("SUDO_USERS", "").split())
 
 # For Blacklist Group Support
 BLACKLIST_CHAT = os.environ.get("BLACKLIST_CHAT", None)
@@ -105,12 +113,14 @@ PM_LIMIT = int(os.environ.get("PM_LIMIT", 6))
 # Custom Handler command
 CMD_HANDLER = os.environ.get("CMD_HANDLER") or "."
 
+SUDO_HANDLER = os.environ.get("SUDO_HANDLER", r"$")
+
 # Owner ID
 OWNER_ID = int(os.environ.get("OWNER_ID") or 0)
 
 # Support
-GROUP = os.environ.get("GROUP", "TornadoComunity ")
-CHANNEL = os.environ.get("CHANNEL", "TornadoComunity")
+GROUP = os.environ.get("GROUP", "SharingUserbot")
+CHANNEL = os.environ.get("CHANNEL", "Lunatic0de")
 
 # Heroku Credentials for updater.
 HEROKU_APP_NAME = os.environ.get("HEROKU_APP_NAME", None)
@@ -126,9 +136,9 @@ GITHUB_ACCESS_TOKEN = os.environ.get("GITHUB_ACCESS_TOKEN", None)
 # Custom (forked) repo URL for updater.
 UPSTREAM_REPO_URL = os.environ.get(
     "UPSTREAM_REPO_URL",
-    "https://github.com/Bomansyah/Tornado-Userbot.git")
+    "https://github.com/mrismanaziz/Man-Userbot.git")
 UPSTREAM_REPO_BRANCH = os.environ.get(
-    "UPSTREAM_REPO_BRANCH", "Tornado-Userbot")
+    "UPSTREAM_REPO_BRANCH", "Man-Userbot")
 
 # Console verbose logging
 CONSOLE_LOGGER_VERBOSE = sb(os.environ.get("CONSOLE_LOGGER_VERBOSE", "False"))
@@ -176,13 +186,16 @@ ALIVE_TEKS_CUSTOM = os.environ.get(
     "Hey, I am alive.")
 
 # Default .alive name
-ALIVE_NAME = os.environ.get("ALIVE_NAME", "𝙶𝚎𝚗")
+ALIVE_NAME = os.environ.get("ALIVE_NAME", "Man")
 
 # Custom Emoji Alive
-ALIVE_EMOJI = os.environ.get("ALIVE_EMOJI", "〠")
+ALIVE_EMOJI = os.environ.get("ALIVE_EMOJI", "⚡️")
+
+# Custom Emoji Alive
+INLINE_EMOJI = os.environ.get("INLINE_EMOJI", "✘")
 
 # Custom icon HELP
-ICON_HELP = os.environ.get("ICON_HELP", "֎")
+ICON_HELP = os.environ.get("ICON_HELP", "❉")
 
 # Time & Date - Country and Time Zone
 COUNTRY = str(os.environ.get("COUNTRY", "ID"))
@@ -212,6 +225,9 @@ S_PACK_NAME = os.environ.get("S_PACK_NAME", f"Sticker Pack {ALIVE_NAME}")
 # Default .alive logo
 ALIVE_LOGO = os.environ.get(
     "ALIVE_LOGO") or "https://telegra.ph/file/9dc4e335feaaf6a214818.jpg"
+
+INLINE_PIC = os.environ.get(
+    "INLINE_PIC") or "https://telegra.ph/file/9dc4e335feaaf6a214818.jpg"
 
 # Last.fm Module
 BIO_PREFIX = os.environ.get("BIO_PREFIX", None)
@@ -258,33 +274,6 @@ API_URL = os.environ.get("API_URL", "http://antiddos.systems")
 BOT_TOKEN = os.environ.get("BOT_TOKEN", None)
 BOT_USERNAME = os.environ.get("BOT_USERNAME", None)
 
-# Init Mongo
-MONGOCLIENT = MongoClient(MONGO_URI, 27017, serverSelectionTimeoutMS=1)
-MONGO = MONGOCLIENT.userbot
-
-
-def is_mongo_alive():
-    try:
-        MONGOCLIENT.server_info()
-    except BaseException:
-        return False
-    return True
-
-
-# Init Redis
-# Redis will be hosted inside the docker container that hosts the bot
-# We need redis for just caching, so we just leave it to non-persistent
-REDIS = StrictRedis(host='localhost', port=6379, db=0)
-
-
-def is_redis_alive():
-    try:
-        REDIS.ping()
-        return True
-    except BaseException:
-        return False
-
-
 # Setting Up CloudMail.ru and MEGA.nz extractor binaries,
 # and giving them correct perms to work properly.
 if not os.path.exists('bin'):
@@ -307,7 +296,7 @@ for binary, path in binaries.items():
 if STRING_SESSION:
     session = StringSession(str(STRING_SESSION))
 else:
-    session = "TornadoUserBot"
+    session = "ManUserBot"
 try:
     bot = TelegramClient(
         session=session,
@@ -357,6 +346,34 @@ with bot:
         sys.exit(1)
 
 
+async def update_restart_msg(chat_id, msg_id):
+    DEFAULTUSER = ALIVE_NAME or "Set `ALIVE_NAME` ConfigVar!"
+    message = (
+        f"**Man-UserBot v{BOT_VER} is back up and running!**\n\n"
+        f"**Telethon:** {version.__version__}\n"
+        f"**Python:** {python_version()}\n"
+        f"**User:** {DEFAULTUSER}"
+    )
+    await bot.edit_message(chat_id, msg_id, message)
+    return True
+
+
+try:
+    from userbot.modules.sql_helper.globals import delgvar, gvarstatus
+
+    chat_id, msg_id = gvarstatus("restartstatus").split("\n")
+    with bot:
+        try:
+            bot.loop.run_until_complete(
+                update_restart_msg(
+                    int(chat_id), int(msg_id)))
+        except BaseException:
+            pass
+    delgvar("restartstatus")
+except AttributeError:
+    pass
+
+
 # Global Variables
 COUNT_MSG = 0
 USERS = {}
@@ -372,10 +389,17 @@ ZALG_LIST = {}
 def paginate_help(page_number, loaded_modules, prefix):
     number_of_rows = 5
     number_of_cols = 4
+    global looters
+    looters = page_number
     helpable_modules = [p for p in loaded_modules if not p.startswith("_")]
     helpable_modules = sorted(helpable_modules)
     modules = [
-        custom.Button.inline("{} {} ✘".format("✘", x), data="ub_modul_{}".format(x))
+        custom.Button.inline(
+            "{} {} {}".format(
+                f"{INLINE_EMOJI}",
+                x,
+                f"{INLINE_EMOJI}"),
+            data="ub_modul_{}".format(x))
         for x in helpable_modules
     ]
     pairs = list(
@@ -418,20 +442,21 @@ with bot:
         ).start(bot_token=BOT_TOKEN)
 
         dugmeler = CMD_HELP
-        me = bot.get_me()
-        uid = me.id
+        user = bot.get_me()
+        uid = user.id
         logo = ALIVE_LOGO
+        logoman = INLINE_PIC
 
         @tgbot.on(events.NewMessage(pattern="/start"))
         async def handler(event):
             await event.message.get_sender()
             text = (
-                f"**Hey**, __I am using__ 🇮🇩 **Tornado-Userbot** 🇮🇩\n\n"
+                f"**Hey**, __I am using__ 🔥 **Man-Userbot** 🔥\n\n"
                 f"       __Thanks For Using me__\n\n"
                 f"✣ **Userbot Version :** `{BOT_VER}@{UPSTREAM_REPO_BRANCH}`\n"
-                f"✣ **Group Support :** [Tornado Userbot](t.me/TornadoComunity)\n"
-                f"✣ **Owner Repo :** [◨𝙶𝙴𝙽𝚂𝙷𝙸𝙽☄ＡＳＩＡ≑](t.me/GenshinHunter)\n"
-                f"✣ **Repo :** [Tornado-Userbot](https://github.com/Bomansyah/Tornado-Userbot)\n")
+                f"✣ **Group Support :** [Sharing Userbot](t.me/sharinguserbot)\n"
+                f"✣ **Owner Repo :** [Risman](t.me/mrismanaziz)\n"
+                f"✣ **Repo :** [Man-Userbot](https://github.com/mrismanaziz/Man-Userbot)\n")
             await tgbot.send_file(
                 event.chat_id,
                 logo,
@@ -439,16 +464,16 @@ with bot:
                 buttons=[
                     [
                         custom.Button.url(
-                            text="🇮🇩 REPO TORNADO-USERBOT 🇮🇩",
+                            text="⛑ REPO MAN-USERBOT ⛑",
                             url="https://github.com/mrismanaziz/Man-Userbot",
                         )
                     ],
                     [
                         custom.Button.url(
-                            text="GROUP", url="https://t.me/TornadoComunity"
+                            text="GROUP", url="https://t.me/SharingUserbot"
                         ),
                         custom.Button.url(
-                            text="CHANNEL", url="https://t.me/TornadoComunity"
+                            text="CHANNEL", url="https://t.me/Lunatic0de"
                         ),
                     ],
                 ],
@@ -459,54 +484,82 @@ with bot:
             builder = event.builder
             result = None
             query = event.text
-            if event.query.user_id == uid and query.startswith("@UserButt"):
+            if event.query.user_id == uid and query.startswith(
+                    "@SharingUserbot"):
                 buttons = paginate_help(0, dugmeler, "helpme")
-                result = builder.article(
-                    "Harap Gunakan .help Untuk Perintah",
-                    text="{}\n\n**✥ Jumlah Module Yang Tersedia :** `{}` **Module**\n               \n**✥ Daftar Modul Man-Userbot :** \n".format(
-                        "**🇮🇩 Tornado-Userbot Main Menu 🇮🇩**",
-                        len(dugmeler),
-                    ),
-                    buttons=buttons,
+                result = builder.photo(
+                    file=logoman,
                     link_preview=False,
+                    text=f"**✗ Man-Userbot Inline Menu ✗**\n\n✣ **Owner** [{user.first_name}](tg://user?id={user.id})\n✣ **Jumlah** `{len(dugmeler)}` Modules",
+                    buttons=buttons,
                 )
             elif query.startswith("repo"):
                 result = builder.article(
                     title="Repository",
-                    description="Repository Tornado - Userbot",
-                    url="https://t.me/TornadoComunity",
-                    text="**Tornado - UserBot**\n➖➖➖➖➖➖➖➖➖➖\n✣ **Owner Repo :** [◨𝙶𝙴𝙽𝚂𝙷𝙸𝙽☄ＡＳＩＡ≑](https://t.me/GenshinHunter)\n✣ **Grup Support :** @TornadoComunity\n✣ **Repository :** [Tornado-Userbot](https://github.com/Bomansyah/Tornado-Userbot)\n➖➖➖➖➖➖➖➖➖➖",
+                    description="Repository Man - Userbot",
+                    url="https://t.me/SharingUserbot",
+                    thumb=InputWebDocument(
+                        INLINE_PIC,
+                        0,
+                        "image/jpeg",
+                        []),
+                    text="**Man - UserBot**\n➖➖➖➖➖➖➖➖➖➖\n✣ **UserMode: :** **Owner Repo :** [Risman](https://t.me/mrismanaziz)\n✣ **Support :** @Lunatic0de\n✣ **Repository :** [Man-Userbot](https://github.com/mrismanaziz/Man-Userbot)\n➖➖➖➖➖➖➖➖➖➖",
                     buttons=[
                         [
                             custom.Button.url(
-                                "Support",
-                                "https://t.me/TornadoComunity"),
+                                "ɢʀᴏᴜᴘ",
+                                "https://t.me/SharingUserbot"),
                             custom.Button.url(
-                                "Repo",
-                                "https://github.com/Bomansyah/Tornado-Userbot"),
+                                "ʀᴇᴘᴏ",
+                                "https://github.com/mrismanaziz/Man-Userbot"),
                         ],
                     ],
                     link_preview=False,
                 )
             else:
                 result = builder.article(
-                    title="『Tornado-Userbot Telah Aktif』",
-                    description="Tornado - UserBot | Telethon",
-                    url="https://t.me/TornadoComunity",
-                    text="**Tornado - UserBot**\n➖➖➖➖➖➖➖➖➖➖\n✣ **Owner Repo :** [◨𝙶𝙴𝙽𝚂𝙷𝙸𝙽☄ＡＳＩＡ≑](https://t.me/GenshinHunter)\n✣ **Grup Support :** @TornadoComunity\n✣ **Repository :** [Tornado-Userbot](https://github.com/Bomansyah/Tornado-Userbot)\n➖➖➖➖➖➖➖➖➖➖",
+                    title="✗ Man-Userbot ✗",
+                    description="Man - UserBot | Telethon",
+                    url="https://t.me/SharingUserbot",
+                    thumb=InputWebDocument(
+                        INLINE_PIC,
+                        0,
+                        "image/jpeg",
+                        []),
+                    text=f"**Man - UserBot**\n➖➖➖➖➖➖➖➖➖➖\n✣ **UserMode:** [{user.first_name}](tg://user?id={user.id})\n✣ **Assistant:** {BOT_USERNAME}\n➖➖➖➖➖➖➖➖➖➖\n**Support:** @Lunatic0de\n➖➖➖➖➖➖➖➖➖➖",
                     buttons=[
                         [
                             custom.Button.url(
-                                "Support",
-                                "https://t.me/TornadoComunity"),
+                                "ɢʀᴏᴜᴘ",
+                                "https://t.me/SharingUserbot"),
                             custom.Button.url(
-                                "Repo",
-                                "https://github.com/Bomansyah/Tornado-Userbot"),
+                                "ʀᴇᴘᴏ",
+                                "https://github.com/mrismanaziz/Man-Userbot"),
                         ],
                     ],
                     link_preview=False,
                 )
-            await event.answer([result] if result else None)
+            await event.answer([result], switch_pm="👥 USERBOT PORTAL", switch_pm_param="start")
+
+        @tgbot.on(
+            events.callbackquery.CallbackQuery(
+                data=re.compile(rb"reopen")
+            )
+        )
+        async def on_plug_in_callback_query_handler(event):
+            if event.query.user_id == uid:
+                current_page_number = int(looters)
+                buttons = paginate_help(
+                    current_page_number, dugmeler, "helpme")
+                text = f"**✗ Man-Userbot Inline Menu ✗**\n\n✣ **Owner** [{user.first_name}](tg://user?id={user.id})\n✣ **Jumlah** `{len(dugmeler)}` Modules"
+                await event.edit(text,
+                                 file=logoman,
+                                 buttons=buttons,
+                                 link_preview=False,
+                                 )
+            else:
+                reply_pop_up_alert = f"Kamu Tidak diizinkan, ini Userbot Milik {ALIVE_NAME}"
+                await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
 
         @tgbot.on(
             events.callbackquery.CallbackQuery(
@@ -528,8 +581,10 @@ with bot:
 
         @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"close")))
         async def on_plug_in_callback_query_handler(event):
-            if event.query.user_id == uid:
-                await event.edit("**Help Mode Button Ditutup!**")
+            if event.query.user_id == uid or event.query.user_id in DEVS:
+                openlagi = custom.Button.inline(
+                    f"• Re-Open Menu •", data="reopen")
+                await event.edit(f"⚜️ **Help Mode Button Ditutup!** ⚜️", buttons=openlagi)
             else:
                 reply_pop_up_alert = (
                     f"Kamu Tidak diizinkan, ini Userbot Milik {ALIVE_NAME}"
