@@ -29,22 +29,22 @@ for module_name in ALL_MODULES:
     imported_module = import_module("userbot.modules." + module_name)
 
 LOGS.info(
-    f"Jika {ALIVE_NAME} Membutuhkan Bantuan, Silahkan Gabung ke Grup https://t.me/TornadoComunity")
+    f"Jika {ALIVE_NAME} Membutuhkan Bantuan, Silahkan Gabung ke Grup https://t.me/SharingUserbot")
 
 LOGS.info(
-    f"Tornado-Userbot ⚙️ V{BOT_VER} [『Tornado-Userbot Telah Aktif』]")
+    f"Man-Userbot ⚙️ V{BOT_VER} [🔥 BERHASIL DIAKTIFKAN! 🔥]")
 
 
 async def man_userbot_on():
     try:
         if BOTLOG_CHATID != 0:
-            await bot.send_message(BOTLOG_CHATID, f"**『Tornado-Userbot Telah Aktif』**")
+            await bot.send_message(BOTLOG_CHATID, f"🔥 **Man-Userbot Berhasil Di Aktifkan**\n━━\n➠ **Userbot Version -** `{BOT_VER}@{UPSTREAM_REPO_BRANCH}`\n➠ **Ketik** `.alive` **untuk Mengecheck Bot**\n━━")
     except Exception as e:
         LOGS.info(str(e))
 # KALO LU NGEFORK LINK CH & GRUP PUNYA GUA NYA JANGAN DI HAPUS YA GOBLOK 😡
     try:
-        await bot(JoinChannelRequest("@GenshinHunter"))
-        await bot(JoinChannelRequest("@TornadoComunity"))
+        await bot(JoinChannelRequest("@Lunatic0de"))
+        await bot(JoinChannelRequest("@SharingUserbot"))
     except BaseException:
         pass
 # JANGAN DI HAPUS GOBLOK 😡 LU COPY/EDIT AJA TINGGAL TAMBAHIN PUNYA LU
