@@ -38,7 +38,7 @@ LOGS.info(
 async def man_userbot_on():
     try:
         if BOTLOG_CHATID != 0:
-            await bot.send_message(BOTLOG_CHATID, f"🔥 **Man-Userbot Berhasil Di Aktifkan**\n━━\n➠ **Userbot Version -** `{BOT_VER}@{UPSTREAM_REPO_BRANCH}`\n➠ **Ketik** `.alive` **untuk Mengecheck Bot**\n━━")
+            await bot.send_message(BOTLOG_CHATID, f"🔥 **『Nanggroe-Userbot Telah Aktif』**")
     except Exception as e:
         LOGS.info(str(e))
 # KALO LU NGEFORK LINK CH & GRUP PUNYA GUA NYA JANGAN DI HAPUS YA GOBLOK 😡
